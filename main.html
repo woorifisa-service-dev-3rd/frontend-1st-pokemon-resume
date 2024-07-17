@@ -58,7 +58,7 @@
             white-space: nowrap;
         }
 
-        .img_soon {
+        .img_sun {
             position: absolute;
             z-index: 1;
             top: 50%;
@@ -99,6 +99,7 @@
 
 <body>
     <div class="main-container">
+        <audio src="src/audio/poke__bgm.mp3" autoplay loop></audio>
         <img class="img_main" src="src/img/html_main.jpg" alt="main_img">
         <div class="container_monsterball">
             <img class="img_monsterball" draggable="true" src="src/img/monster_ball.png" alt="monster_img">
@@ -112,7 +113,7 @@
                 <span class="font_l">앗! 야생의 메타몽이 튀어나왔다!</span>
             </div>
         </div> -->
-        <img class="img_soon" src="src/img/soon.png" alt="soon">
+        <img class="img_sun" src="src/img/sun.png" alt="sun">
         <img id="meta_mong" class="img_meta" src="src/img/metamong.png" alt="meta_mong">
     </div>
 
@@ -136,7 +137,7 @@
             setTimeout(() => {
                 metaMong.classList.remove('img_bright');
                 metaMong.style.opacity = '1';
-                meta.innerText = "**은 뭐를 할까?"
+                meta.innerText = "순범은 누구를 내보낼까?"
             }, 4000);
 
             // const meta = document.getElementById('meta_talk');
