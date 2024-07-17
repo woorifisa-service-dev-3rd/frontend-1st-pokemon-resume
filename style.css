@@ -111,8 +111,8 @@
 .container_font {
   width: fit-content;
   height: fit-content;
-  padding: ?;
-  border-radius: ?;
+  /* padding: ?;
+  border-radius: ?; */
 }
 
 .container_modal {
