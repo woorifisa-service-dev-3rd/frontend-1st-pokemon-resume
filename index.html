@@ -1,18 +1,146 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ko">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="style.css">
-    <script defer src="app.js"></script>
-    <script defer src="data.js"></script>
+    <title>포트폴리오</title>
+    <style>
+        body {
+            font-family: Pretendard Variable, sans-serif;
+            background-color: #d32f2f;
+            /* 회색 - background-color: #1e1e1e; */
+            color: #000;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-container {
+            position: relative;
+            width: 50vw;
+            max-width: 1440px;
+            min-width: 360px;
+
+            border: 5px solid black;
+            background: #333;
+            box-shadow: 0 0 2em rgba(255, 255, 255, 0.5);
+        }
+
+        .img_main {
+            width: 100%;
+        }
+
+        .container_monsterball {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 50%;
+            transform: translate(-0%, 20%);
+            display: flex;
+        }
+
+        .img_monsterball {
+            width: 20%;
+            cursor: grab;
+        }
+
+        .container_talk {
+            position: absolute;
+            z-index: 1;
+            top: 80%;
+            left: 50%;
+            transform: translate(-50%, -90%);
+            font-size: 3vw;
+            white-space: nowrap;
+        }
+
+        .img_soon {
+            position: absolute;
+            z-index: 1;
+            top: 50%;
+            left: 20%;
+            transform: translate(-30%, -50%);
+            width: 35%;
+        }
+
+        .img_meta {
+            position: absolute;
+            z-index: 1;
+            top: 20%;
+            left: 80%;
+            transform: translate(-50%, -50%);
+            width: 30%;
+            transition: opacity 2s, filter 2s;
+        }
+
+        .img_bright {
+            /* 2초동안 유지 */
+            animation: bright 2s forwards;
+        }
+
+        @keyframes bright {
+            0% {
+                opacity: 1;
+                /* 밝기증가와 흐림도? */
+                filter: brightness(1.5) blur(4px);
+            }
+
+            100% {
+                opacity: 0;
+                filter: brightness(1) blur(0);
+            }
+        }
+    </style>
 </head>
 
 <body>
+    <div class="main-container">
+        <img class="img_main" src="html_main.jpg" alt="main_img">
+        <div class="container_monsterball">
+            <img class="img_monsterball" draggable="true" src="monster_ball.png" alt="monster_img">
+            <img class="img_monsterball" draggable="true" src="monster_ball.png" alt="monster_img">
+            <img class="img_monsterball" draggable="true" src="monster_ball.png" alt="monster_img">
+            <img class="img_monsterball" draggable="true" src="monster_ball.png" alt="monster_img">
+        </div>
+        <p id="meta_talk" class="container_talk">앗! 야생의 메타몽이 튀어나왔다!</p>
+        <img class="img_soon" src="soon.png" alt="soon">
+        <img id="meta_mong" class="img_meta" src="metamong.png" alt="meta_mong">
+    </div>
 
+    <script>
+        const metaMong = document.getElementById('meta_mong');
+        // console.log(metaMong);
+        // const metaMong2 = document.getElementsByClassName('img_meta')
+        // console.log(metaMong2);
+
+        metaMong.addEventListener('dragover', (event) => {
+            event.preventDefault();
+        });
+
+        metaMong.addEventListener('drop', (event) => {
+            event.preventDefault();
+            metaMong.classList.add('img_bright');
+            const meta = document.getElementById('meta_talk');
+            meta.innerText = "아 아쉽다. 메타몽은 변신을 썻다."
+
+            //4초 후에 나오게 하기
+            setTimeout(() => {
+                metaMong.classList.remove('img_bright');
+                metaMong.style.opacity = '1';
+                meta.innerText = "**은 뭐를 할까?"
+            }, 4000);
+
+            // const meta = document.getElementById('meta_talk');
+            // meta.innerText = "아 아쉽다" <br> "메타몽은 변신을 썻다."
+            // console.log(typeof meta);
+            // console.log(document.getElementById('meta_talk'));
+
+        });
+    </script>
 </body>
 
 </html>
