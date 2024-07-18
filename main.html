@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>포트폴리오</title>
+    <script defer type="module" src="app.js"></script>
+    <script defer type="module" src="mainPokemonBall.js"></script>
     <style>
       body {
         font-family: Pretendard Variable, sans-serif;
@@ -172,24 +174,28 @@
           draggable="true"
           src="src/img/monster_ball.png"
           alt="monster_img"
+          id="img_monsterball_1"
         />
         <img
           class="img_monsterball"
           draggable="true"
           src="src/img/monster_ball.png"
           alt="monster_img"
+          id="img_monsterball_2"
         />
         <img
           class="img_monsterball"
           draggable="true"
           src="src/img/monster_ball.png"
           alt="monster_img"
+          id="img_monsterball_3"
         />
         <img
           class="img_monsterball"
           draggable="true"
           src="src/img/monster_ball.png"
           alt="monster_img"
+          id="img_monsterball_4"
         />
       </div>
 
@@ -218,85 +224,6 @@
       >
     </div>
 
-    <script>
-      const metaMong = document.getElementById("meta_mong");
-      const modal = document.getElementById("container_modal");
-      const bg_shadow = document.getElementById("shadow-container");
-      const pauseIcon = '<i class="fa-solid fa-volume-high"></i>';
-      const playIcon = '<i class="fa-solid fa-volume-xmark"></i>';
-      // console.log(metaMong);
-      // const metaMong2 = document.getElementsByClassName('img_meta')
-      // console.log(metaMong2);
-      metaMong.addEventListener("dragover", (event) => {
-        event.preventDefault();
-      });
-      metaMong.addEventListener("drop", (event) => {
-        event.preventDefault();
-        metaMong.classList.add("img_bright");
-        const meta = document.getElementById("meta_talk");
-        const message = "아 아쉽다. 메타몽은 변신을 썼다.";
-        let index = 0;
-
-        meta.textContent = "";
-
-        const intervalId = setInterval(() => {
-          if (index < message.length) {
-            meta.textContent += message[index];
-            index++;
-          } else {
-            clearInterval(intervalId);
-          }
-        }, 100);
-
-        setTimeout(() => {
-          metaMong.classList.remove("img_bright");
-          metaMong.style.opacity = "1";
-
-          const newMessage = "순범은 누구를 내보낼까?";
-          let newIndex = 0;
-
-          meta.textContent = "";
-
-          const newIntervalId = setInterval(() => {
-            if (newIndex < newMessage.length) {
-              meta.textContent += newMessage[newIndex];
-              newIndex++;
-            } else {
-              clearInterval(newTxt);
-            }
-          }, 100);
-        }, 4000);
-
-        setTimeout(() => {
-          showModal();
-        }, 3000);
-      });
-
-      bg_shadow.addEventListener("click", () => {
-        closeModal();
-      });
-
-      function showModal() {
-        modal.style.visibility = "visible";
-        bg_shadow.style.visibility = "visible";
-      }
-
-      function closeModal() {
-        modal.style.visibility = "hidden";
-        bg_shadow.style.visibility = "hidden";
-      }
-
-      const audioBgm = document.getElementById("audio-bgm");
-      audioBgm.addEventListener("click", () => {
-        if (bgm.paused) {
-          bgm.play();
-          audioBgm.innerHTML = pauseIcon;
-        } else {
-          bgm.pause();
-          audioBgm.innerHTML = playIcon;
-        }
-      });
-    </script>
     <script
       src="https://kit.fontawesome.com/71323f225b.js"
       crossorigin="anonymous"
