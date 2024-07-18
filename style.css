@@ -112,16 +112,13 @@
   }
 }
 
-.container_content {
-  width: fit-content;
-  height: fit-content;
-}
-
 .container_font {
   width: fit-content;
   height: fit-content;
-  /* padding: ?;
-  border-radius: ?; */
+  padding: 1rem;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  margin-top: 0.6rem;
 }
 
 .container_modal {
@@ -130,6 +127,51 @@
 
 .container_monsterball {
   position: absolute;
+}
+
+.container_profile {
+  width: 10rem;
+  height: 10rem;
+  padding: 2rem;
+}
+@media (max-width: 1024px) {
+  .container_profile {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_profile {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container_profile {
+    padding: 0.25rem;
+  }
+}
+
+.container_info {
+  width: 25vw;
+  padding: 2rem;
+}
+@media (max-width: 1024px) {
+  .container_info {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_info {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container_info {
+    padding: 0.25rem;
+  }
 }
 
 .font_xl {
@@ -157,6 +199,8 @@
 }
 
 .img_profile {
+  width: 100%; /* 너비 196픽셀 */
+  height: 100%; /* 높이 202픽셀 */
 }
 
 .img_inline_xl {

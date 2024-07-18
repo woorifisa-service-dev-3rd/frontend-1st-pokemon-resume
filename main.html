@@ -143,6 +143,17 @@
       .audio_control:hover {
         color: #ffeb3b;
       }
+
+      .team_name {
+        /* 황박사와 친구들 위치! */
+        position: absolute;
+        z-index: 1;
+        top: 13%;
+        left: 30%;
+        transform: translate(-50%, -90%);
+        font-size: 2.5vw;
+        white-space: nowrap;
+      }
     </style>
   </head>
   <body>
@@ -181,6 +192,9 @@
           alt="monster_img"
         />
       </div>
+
+      <p id="team" class="team_name">황박사와 친구들</p>
+
       <p id="meta_talk" class="container_talk">
         앗! 야생의 메타몽이 튀어나왔다!
       </p>
