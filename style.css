@@ -113,16 +113,15 @@
   }
 }
 
-.container_content {
-  width: fit-content;
-  height: fit-content;
+.container_inner {
+  padding: 2rem;
 }
 
 .container_font {
   width: fit-content;
   height: fit-content;
-  /* padding: ?;
-  border-radius: ?; */
+  padding: 1rem;
+  border-radius: 20%;
 }
 
 .container_modal {
