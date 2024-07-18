@@ -119,11 +119,41 @@
           transform: rotate(-360deg);
         }
       }
+
+      .container_audio {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .audio_control {
+        background: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .audio_control:hover {
+        color: #ffeb3b;
+      }
     </style>
   </head>
   <body>
     <div class="main-container">
-      <audio src="src/audio/poke__bgm.mp3" autoplay loop></audio>
+      <!-- audio 추가 -->
+      <audio id="bgm" src="src/audio/poke__bgm.mp3" loop></audio>
+      <div class="container_audio">
+        <button class="audio_control" id="audio-bgm">
+          <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+      </div>
       <img class="img_main" src="src/img/html_main.jpg" alt="main_img" />
       <div class="container_monsterball">
         <img
@@ -178,6 +208,8 @@
       const metaMong = document.getElementById("meta_mong");
       const modal = document.getElementById("container_modal");
       const bg_shadow = document.getElementById("shadow-container");
+      const pauseIcon = '<i class="fa-solid fa-volume-high"></i>';
+      const playIcon = '<i class="fa-solid fa-volume-xmark"></i>';
       // console.log(metaMong);
       // const metaMong2 = document.getElementsByClassName('img_meta')
       // console.log(metaMong2);
@@ -217,6 +249,21 @@
         modal.style.visibility = "hidden";
         bg_shadow.style.visibility = "hidden";
       }
+
+      const audioBgm = document.getElementById("audio-bgm");
+      audioBgm.addEventListener("click", () => {
+        if (bgm.paused) {
+          bgm.play();
+          audioBgm.innerHTML = pauseIcon;
+        } else {
+          bgm.pause();
+          audioBgm.innerHTML = playIcon;
+        }
+      });
     </script>
+    <script
+      src="https://kit.fontawesome.com/71323f225b.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
