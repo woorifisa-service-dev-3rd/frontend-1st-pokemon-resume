@@ -238,23 +238,23 @@
 }
 
 .bg_color_red {
-  color: #ef4036;
+  background-color: #ef4036;
 }
 
 .bg_color_brown {
-  color: #86645f;
+  background: #86645f;
 }
 
 .bg_color_purple {
-  color: #612272;
+  background: #612272;
 }
 
 .bg_color_orange {
-  color: #ed8b00;
+  background: #ed8b00;
 }
 
 .bg_color_blue {
-  color: #3776ab;
+  background: #3776ab;
 }
 
 .font_color_red {
@@ -283,6 +283,10 @@
 
 .font_color_subtitle {
   color: #0067ac;
+}
+
+.font_color_white {
+  color: #FFFFFF;
 }
 
 .text_underline {
