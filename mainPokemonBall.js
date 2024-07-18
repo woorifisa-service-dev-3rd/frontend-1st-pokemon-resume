@@ -50,8 +50,10 @@ document.getElementById("modal").addEventListener("load", () => {
     modal_profile_img_tech_4.src = personInfo.tech_stack[3];
 
     modal_profile_appeard_area_1.style.backgroundColor = personInfo.stations[0].station_color;
+    modal_profile_appeard_area_1.style.color = "white";
     modal_profile_appeard_area_1.textContent = personInfo.stations[0].name;
     modal_profile_appeard_area_2.style.backgroundColor = personInfo.stations[1].station_color;
+    modal_profile_appeard_area_2.style.color = "white";
     modal_profile_appeard_area_2.textContent = personInfo.stations[1].name;
   }
 });
