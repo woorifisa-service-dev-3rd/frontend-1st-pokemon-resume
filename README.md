@@ -74,59 +74,6 @@ layout 디자인 참고 [ConcreteDesign System](https://www.figma.com/community/
       <img width="990" alt="스크린샷 2024-07-18 오후 10 39 51" src="https://github.com/user-attachments/assets/79c5422b-fd13-4bbf-984e-0404b1bdda0f">
 <br>
 
-<!-- -   <h3>LayOut Grids 📏</h3>
-
-| Layout Class    | Setting                                           |
-| --------------- | ------------------------------------------------- |
-| 컨테이너        | 너비 100% / 마진 32px / 최대 1920px / 최소 1080px |
-| 분할 컨테이너   | 너비 100% / 디스플레이 플렉스 / 갭 16px           |
-| 콘텐츠 컨테이너 | 너비 100% / 높이 핏 콘텐트 / 마진 16px            |
-| 카드 컨테이너   | 너비 100% / 최대 360px / 마진 16px                |
-
-<br>
-
--   ### Typography 📝 - [Tailwind](https://tailwindcss.com/docs/font-size) 적용
-
-      <img src="./src/img/typography_img.png" width="550" height="400"/>
-
-    -   Tailwind의 `FontSize`로 `style` 적용
-
-<br>
-
--   <h3>Line Design 〰️</h3>
-
-    ```css
-    .line {
-        width: 100%; /* 너비를 부모 요소의 너비에 맞게 설정 */
-        height: 1px; /* 높이를 1px로 설정 */
-        background: #e0e0e0; /* 배경색을 회색으로 설정 */
-        margin: 16px 0; /* 상하 margin을 16px로 설정 */
-    }
-    ```
-
-<br>
-
--   <h3>Image Size 🖼️</h3>
-
-    -   이미지 1 - 너비 : 10%, 비율 3:4 고정, `cover` 이미지
-    -   이미지 2 - 글꼴에 맞춘 가변형 크기, 줄 높이에 따른 rem 단위
-    -   이미지 3 : 카드 크기의 `60%` x `100%`
-
-<br>
-
--   <h3>Punctuation Mark ⚫️</h3> 
-      
-      ![Alt text](./src/img/dot_img.png)
-
-    -   `문장기호1` 특수문자 사용
-
-<br> -->
-
-
-
-
-
-
 ### Branch Name Rule 🪵 - 각자 작업 브랜치 확인이 용이한 브랜치 네이밍 룰 적용
 
     -   `main`
@@ -161,6 +108,13 @@ layout 디자인 참고 [ConcreteDesign System](https://www.figma.com/community/
 ![Group 36](https://github.com/user-attachments/assets/6a8da71b-306c-46ef-926e-7e49115844c8)
 
 <br>
+
+## 🤯 회고
+
+### 프로젝트 환경 설정의 중요성
+
+### 다 함께 으쌰으쌰
+
 
 <!-- ## Lighthouse
 
