@@ -121,7 +121,9 @@
   width: fit-content;
   height: fit-content;
   padding: 1rem;
-  border-radius: 20%;
+  border-radius: 10px;
+  border: 1px solid #000000;
+  margin-top: 0.6rem;
 }
 
 .container_modal {
@@ -153,6 +155,12 @@
   .container_profile {
     padding: 0.25rem;
   }
+}
+
+.container_info {
+  margin-right: 176px;
+  margin-top: 30px;
+  width: 10vw;
 }
 
 .font_xl {
