@@ -17,7 +17,7 @@
         align-items: center;
         justify-content: center;
       }
-      .shadow-container {
+      #shadow-container {
         z-index: 2;
         position: absolute;
         background-position: center;
@@ -164,10 +164,17 @@
         alt="meta_mong"
       />
     </div>
-    <div class="shadow-container"></div>
-    <iframe src="modal.html" id="container_modal">대체 내용</iframe>
+    <div id="shadow-container" style="visibility: hidden"></div>
+    <div id="container_modal" style="visibility: hidden">
+      <iframe src="modal.html" id="modal" style="width: 100%; height: 100%"
+        >대체 내용</iframe
+      >
+    </div>
+
     <script>
       const metaMong = document.getElementById("meta_mong");
+      const modal = document.getElementById("container_modal");
+      const bg_shadow = document.getElementById("shadow-container");
       // console.log(metaMong);
       // const metaMong2 = document.getElementsByClassName('img_meta')
       // console.log(metaMong2);
@@ -179,6 +186,7 @@
         metaMong.classList.add("img_bright");
         const meta = document.getElementById("meta_talk");
         meta.innerText = "아 아쉽다. 메타몽은 변신을 썻다.";
+        showModal();
         //4초 후에 나오게 하기
         setTimeout(() => {
           metaMong.classList.remove("img_bright");
@@ -190,6 +198,20 @@
         // console.log(typeof meta);
         // console.log(document.getElementById('meta_talk'));
       });
+
+      bg_shadow.addEventListener("click", () => {
+        closeModal();
+      });
+
+      function showModal() {
+        modal.style.visibility = "visible";
+        bg_shadow.style.visibility = "visible";
+      }
+
+      function closeModal() {
+        modal.style.visibility = "hidden";
+        bg_shadow.style.visibility = "hidden";
+      }
     </script>
   </body>
 </html>
