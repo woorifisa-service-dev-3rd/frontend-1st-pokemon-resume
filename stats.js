@@ -44,4 +44,4 @@ const config = {
   },
 };
 
-const chart = new Chart(ctx, config);
+new Chart(ctx, config);
