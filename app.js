@@ -15,6 +15,7 @@ metaMong.addEventListener("drop", (event) => {
   let index = 0;
 
   meta.textContent = "";
+  document.body.classList.add("disable-clicks");
 
   const intervalId = setInterval(() => {
     if (index < message.length) {
@@ -36,10 +37,12 @@ metaMong.addEventListener("drop", (event) => {
       if (newIndex < newMessage.length) {
         meta.textContent += newMessage[newIndex];
         newIndex++;
+      } else {
+        clearInterval(newIntervalId);
+        document.body.classList.remove("disable-clicks");
       }
     }, 100);
-  }, 4000);
-
+  }, 3000);
   setTimeout(() => {
     showModal();
   }, 3000);
