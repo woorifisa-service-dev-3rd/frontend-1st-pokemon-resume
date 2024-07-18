@@ -228,30 +228,12 @@
   color: #3776ab;
 }
 
-.text_xl {
-  font-size: 1.875rem; /* 30px */
-  line-height: 2.25rem; /* 36px */
-  font-weight: 700; /* Bold */
-}
-
-.text_l {
-  font-size: 1.5rem; /* 24px */
-  line-height: 2rem; /* 32px */
-  font-weight: 700; /* Bold */
+.font_color_title {
   color: #20c4f4;
 }
 
-.text_m {
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.75rem; /* 28px */
-  font-weight: 600; /* Bold */
+.font_color_subtitle {
   color: #0067ac;
-}
-
-.text_s {
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.75rem; /* 28px */
-  font-weight: 600; /* Bold */
 }
 
 .text_underline {
