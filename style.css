@@ -130,8 +130,8 @@
 }
 
 .container_profile {
-  width: 10rem;
-  height: 10rem;
+  width: 15rem;
+  height: 15rem;
   padding: 2rem;
 }
 @media (max-width: 1024px) {
@@ -155,6 +155,7 @@
 .container_info {
   width: 25vw;
   padding: 2rem;
+  max-width: 500px;
 }
 @media (max-width: 1024px) {
   .container_info {
@@ -172,6 +173,11 @@
   .container_info {
     padding: 0.25rem;
   }
+}
+
+.container_content {
+  width: fit-content;
+  height: fit-content;
 }
 
 .font_xl {
@@ -289,4 +295,18 @@
 
 #stats {
   border: 3px solid black;
+}
+
+.hiddenItem {
+  visibility: hidden;
+  height: fit-content;
+}
+@media (max-width: 600px) {
+  .hiddenItem {
+    display: none;
+  }
+}
+
+.align_items_start {
+  align-items: flex-start;
 }
