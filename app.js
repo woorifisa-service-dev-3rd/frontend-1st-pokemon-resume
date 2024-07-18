@@ -32,14 +32,12 @@ metaMong.addEventListener("drop", (event) => {
 
     meta.textContent = "";
 
-    // const newIntervalId = setInterval(() => {
-    //   if (newIndex < newMessage.length) {
-    //     meta.textContent += newMessage[newIndex];
-    //     newIndex++;
-    //   } else {
-    //     clearInterval(newTxt);
-    //   }
-    // }, 100);
+    const newIntervalId = setInterval(() => {
+      if (newIndex < newMessage.length) {
+        meta.textContent += newMessage[newIndex];
+        newIndex++;
+      }
+    }, 100);
   }, 4000);
 
   setTimeout(() => {
