@@ -87,10 +87,26 @@
           /* 밝기증가와 흐림도? */
           filter: brightness(1.5) blur(4px);
         }
-
+        
         100% {
           opacity: 0;
           filter: brightness(1) blur(0);
+        }
+      }
+
+     .img_monsterball:hover {
+            /* 회전속도 */
+            animation: continuous-rotate 1s linear infinite;
+        }
+        
+      @keyframes continuous-rotate {
+        from {
+          /* img_monsterball 회전 */
+          transform: rotate(0deg);
+        }
+        
+        to {
+          transform: rotate(-360deg);
         }
       }
     </style>
