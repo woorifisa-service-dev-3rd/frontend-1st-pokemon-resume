@@ -30,29 +30,13 @@ const config = {
     indexAxis: "y",
     scales: {
       x: {
-        beginAtZero: true,
-        font: {
-          size: 16,
-        },
+        display: false,
       },
       y: {
-        ticks: {
-          font: {
-            size: 18,
-          },
-        },
+        display: false,
       },
     },
     plugins: {
-      title: {
-        display: true,
-        align: "start",
-        font: {
-          size: 30,
-        },
-        color: "black",
-        text: "Base Stats",
-      },
       legend: {
         display: false,
       },
