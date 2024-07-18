@@ -18,36 +18,36 @@
   flex-wrap: wrap;
 }
 
-.column {
+.layout_column {
   display: flex;
   flex-direction: column;
 }
 
-.column_center {
+.layout_column_center {
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
 
-.column_under {
+.layout_column_under {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
 }
 
-.column_evenly {
+.layout_column_evenly {
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
 }
 
-.column_between {
+.layout_column_between {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.center {
+.layout_center {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -216,29 +216,4 @@
 
 .font_color_blue {
   color: #3776ab;
-}
-
-.text-base {
-  font-size: 1rem; /* 16px */
-  line-height: 1.5rem; /* 24px */
-}
-
-.text-lg {
-  font-size: 1.125rem; /* 18px */
-  line-height: 1.75rem; /* 28px */
-}
-
-.text-xl {
-  font-size: 1.25rem; /* 20px */
-  line-height: 1.75rem; /* 28px */
-}
-
-.text-2xl {
-  font-size: 1.5rem; /* 24px */
-  line-height: 2rem; /* 32px */
-}
-
-.text-3xl {
-  font-size: 1.875rem; /* 30px */
-  line-height: 2.25rem; /* 36px */
 }
