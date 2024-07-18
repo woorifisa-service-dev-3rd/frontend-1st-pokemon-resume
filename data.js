@@ -44,7 +44,7 @@ export const choi = {
   data: {
     name: "최윤정",
     github: "#cbj0010",
-    profile_img: "/src/img/img_yoon.png",
+    profile_img: "src/img/img_yoon.png",
     stations: [
       { name: "DMC", station_color: "#3E0700" },
       { name: "철산역", station_color: "#424600" },
@@ -65,7 +65,7 @@ export const lee = {
   data: {
     name: "이성희",
     github: "#LouiIII3",
-    profile_img: "/src/img/img_lee.png",
+    profile_img: "src/img/img_lee.png",
     stations: [
       { name: "DMC", station_color: "#3E0700" },
       { name: "수원역", station_color: "#042152" },
