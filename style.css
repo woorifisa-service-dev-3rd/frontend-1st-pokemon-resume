@@ -124,6 +124,29 @@
   position: absolute;
 }
 
+.container_profile {
+  width: 10rem;
+  height: 10rem;
+  padding: 2rem;
+}
+@media (max-width: 1024px) {
+  .container_profile {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_profile {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container_profile {
+    padding: 0.25rem;
+  }
+}
+
 .font_xl {
   font-size: 1.875rem;
   line-height: 2.25rem;
@@ -149,8 +172,8 @@
 }
 
 .img_profile {
-  width: 196px; /* 너비 196픽셀 */
-  height: 202px; /* 높이 202픽셀 */
+  width: 100%; /* 너비 196픽셀 */
+  height: 100%; /* 높이 202픽셀 */
   background-color: #86645f; /* 배경색 (선택 사항) */
   border: 1px solid #000000; /* 테두리 (선택 사항) */
   border-radius: 30px;
