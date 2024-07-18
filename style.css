@@ -25,6 +25,7 @@
 
 .layout_column_center {
   display: flex;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
 }
@@ -148,6 +149,11 @@
 }
 
 .img_profile {
+  width: 196px; /* 너비 196픽셀 */
+  height: 202px; /* 높이 202픽셀 */
+  background-color: #86645f; /* 배경색 (선택 사항) */
+  border: 1px solid #000000; /* 테두리 (선택 사항) */
+  border-radius: 30px;
 }
 
 .img_inline_xl {
