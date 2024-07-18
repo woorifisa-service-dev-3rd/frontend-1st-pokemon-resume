@@ -234,20 +234,42 @@
         event.preventDefault();
         metaMong.classList.add("img_bright");
         const meta = document.getElementById("meta_talk");
-        meta.innerText = "아 아쉽다. 메타몽은 변신을 썻다.";
-        setTimeout(() => {
-          showModal();
-        }, 1000);
-        //4초 후에 나오게 하기
+        const message = "아 아쉽다. 메타몽은 변신을 썼다.";
+        let index = 0;
+
+        meta.textContent = "";
+
+        const intervalId = setInterval(() => {
+          if (index < message.length) {
+            meta.textContent += message[index];
+            index++;
+          } else {
+            clearInterval(intervalId);
+          }
+        }, 100);
+
         setTimeout(() => {
           metaMong.classList.remove("img_bright");
           metaMong.style.opacity = "1";
-          meta.innerText = "순범은 누구를 내보낼까?";
+
+          const newMessage = "순범은 누구를 내보낼까?";
+          let newIndex = 0;
+
+          meta.textContent = "";
+
+          const newIntervalId = setInterval(() => {
+            if (newIndex < newMessage.length) {
+              meta.textContent += newMessage[newIndex];
+              newIndex++;
+            } else {
+              clearInterval(newTxt);
+            }
+          }, 100);
         }, 4000);
-        // const meta = document.getElementById('meta_talk');
-        // meta.innerText = "아 아쉽다" <br> "메타몽은 변신을 썻다."
-        // console.log(typeof meta);
-        // console.log(document.getElementById('meta_talk'));
+
+        setTimeout(() => {
+          showModal();
+        }, 3000);
       });
 
       bg_shadow.addEventListener("click", () => {
