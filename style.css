@@ -154,9 +154,25 @@
 }
 
 .container_info {
-  margin-right: 176px;
-  margin-top: 30px;
-  width: 10vw;
+  width: 25vw;
+  padding: 2rem;
+}
+@media (max-width: 1024px) {
+  .container_info {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container_info {
+    padding: 0.5rem;
+  }
+}
+
+@media (max-width: 640px) {
+  .container_info {
+    padding: 0.25rem;
+  }
 }
 
 .font_xl {
