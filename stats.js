@@ -1,6 +1,6 @@
 const ctx = document.getElementById("stats");
 const labels = ["소개", "프로젝트경험", "수상내역", "대외활동", "맺음말"];
-const data = [12, 19, 3, 5, 2, 3];
+const data = [193, 388, 1126, 215, 367];
 const config = {
   type: "bar",
   data: {
