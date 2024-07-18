@@ -8,6 +8,8 @@
     <link rel="stylesheet" href="style.css" />
     <script defer src="app.js"></script>
     <script defer src="data.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script type="module" src="stats.js"></script>
   </head>
 
   <body>
@@ -74,25 +76,28 @@
           <div class="container_inner">
             <div class="layout_column">
               <div class="container_content">
-                <span class="font_l">스테이터스</span>
+                <span class="font_l">Base Stats</span>
               </div>
               <div class="layout_row">
                 <div class="layout_column_evenly">
                   <div class="container_content">
-                    <span class="font_m">소개</span>
+                    <span class="font_m"><a href="#introduction">소개</a></span>
                   </div>
                   <div class="container_content">
-                    <span class="font_m">프로젝트경험</span>
+                    <span class="font_m"><a href="#projects">프로젝트경험</a></span>
                   </div>
                   <div class="container_content">
-                    <span class="font_m">수상내역</span>
+                    <span class="font_m"><a href="#awards_certificates">수상내역</a></span>
                   </div>
                   <div class="container_content">
-                    <span class="font_m">대외활동</span>
+                    <span class="font_m"><a href="#work_experience">대외활동</a></span>
                   </div>
                   <div class="container_content">
-                    <span class="font_m">맺음말</span>
+                    <span class="font_m"><a href="#epilogue">맺음말</a></span>
                   </div>
+                </div>
+                <div class="layout_column_evenly">
+                  <canvas id="stats"></canvas>
                 </div>
                 <div class="layout_column_evenly">
                   <div class="container_content">

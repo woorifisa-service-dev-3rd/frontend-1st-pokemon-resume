@@ -1,11 +1,5 @@
 const ctx = document.getElementById("stats");
-const labels = [
-  "Introduction",
-  "프로젝트 경험",
-  "수상내역/자격증",
-  "활동",
-  "맺음말",
-];
+const labels = ["소개", "프로젝트경험", "수상내역", "대외활동", "맺음말"];
 const data = [12, 19, 3, 5, 2, 3];
 const config = {
   type: "bar",

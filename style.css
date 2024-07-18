@@ -242,3 +242,7 @@
 .dot {
   color: #000;
 }
+
+#stats {
+  border: 3px solid black;
+}
