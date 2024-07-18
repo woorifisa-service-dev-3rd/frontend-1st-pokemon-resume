@@ -19,9 +19,13 @@
 
 <br>
 
-## 📋 Git Pages
+## 🖥️ 시연 영상
 
-### [Live Demo](https://woorifisa-service-dev-3rd.github.io/frontend-1st-resume/)
+- 데스크탑
+![화면 기록 2024-07-19 오전 2 59 25](https://github.com/user-attachments/assets/b8779b51-2add-4da6-a196-7c321fad6c38)
+
+- 모바일
+![화면 기록 2024-07-19 오전 2 59 47](https://github.com/user-attachments/assets/6e2f40cb-e001-4170-a364-254d07c74c94)
 
 <br>
 
