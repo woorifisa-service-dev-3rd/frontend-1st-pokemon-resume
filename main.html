@@ -18,6 +18,21 @@
         justify-content: center;
       }
 
+      .shadow-container {
+        z-index: 2;
+        position: absolute;
+        background-position: center;
+        background-color: rgba(15, 14, 14, 0.603);
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       .main-container {
         position: relative;
         width: 50vw;
@@ -142,7 +157,7 @@
         alt="meta_mong"
       />
     </div>
-
+    <div class="shadow-container"></div>
     <script>
       const metaMong = document.getElementById("meta_mong");
       // console.log(metaMong);
