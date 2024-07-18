@@ -15,7 +15,6 @@ export const hong = {
       "https://img.shields.io/badge/java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white",
       "https://img.shields.io/badge/springboot-6DB33F?style=for-the-badge&logo=springboot&logoColor=white",
       "https://img.shields.io/badge/swagger-85EA2D?style=for-the-badge&logo=swagger&logoColor=white",
-      "https://img.shields.io/badge/jira-0052CC?style=for-the-badge&logo=jira&logoColor=white",
     ],
   },
 };
@@ -56,6 +55,8 @@ export const choi = {
     tech_stack: [
       "https://img.shields.io/badge/android-34A853?style=for-the-badge&logo=android&logoColor=white",
       "https://img.shields.io/badge/kotlin-7F52FF?style=for-the-badge&logo=kotlin&logoColor=white",
+      "https://img.shields.io/badge/express-000000?style=for-the-badge&logo=express&logoColor=white",
+      "https://img.shields.io/badge/mysql-4479A1?style=for-the-badge&logo=mysql&logoColor=white",
     ],
   },
 };

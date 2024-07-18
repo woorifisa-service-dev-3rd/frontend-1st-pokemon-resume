@@ -68,10 +68,10 @@ function setInfo(personInfo) {
   modal_profile_hobby.textContent = personInfo.hobby;
   modal_profile_hours.textContent = personInfo.hours;
   modal_profile_mbti.textContent = personInfo.mbti;
-  modal_profile_img_tech_1.textContent = personInfo.tech_stack[0];
-  modal_profile_img_tech_2.textContent = personInfo.tech_stack[1];
-  modal_profile_img_tech_3.textContent = personInfo.tech_stack[2];
-  modal_profile_img_tech_4.textContent = personInfo.tech_stack[3];
+  modal_profile_img_tech_1.src = personInfo.tech_stack[0];
+  modal_profile_img_tech_2.src = personInfo.tech_stack[1];
+  modal_profile_img_tech_3.src = personInfo.tech_stack[2];
+  modal_profile_img_tech_4.src = personInfo.tech_stack[3];
   //색상, 텍스트 넣기
   modal_profile_appeard_area_1.style.backgroundColor =
     personInfo.stations[0].station_color;
