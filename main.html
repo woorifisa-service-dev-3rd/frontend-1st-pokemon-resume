@@ -8,7 +8,7 @@
       body {
         font-family: Pretendard Variable, sans-serif;
         background-color: #d32f2f;
-        /* 회색 - background-color: #1e1e1e; */
+        /* 회색 - background-color: #1E1E1E; */
         color: #000;
         margin: 0;
         padding: 0;
@@ -17,22 +17,32 @@
         align-items: center;
         justify-content: center;
       }
-
+      #shadow-container {
+        z-index: 2;
+        position: absolute;
+        background-position: center;
+        background-color: rgba(15, 14, 14, 0.603);
+        height: 100%;
+        width: 100%;
+        opacity: 0.8;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       .main-container {
         position: relative;
         width: 50vw;
         max-width: 1440px;
         min-width: 360px;
-
         border: 5px solid black;
         background: #333;
         box-shadow: 0 0 2em rgba(255, 255, 255, 0.5);
       }
-
       .img_main {
         width: 100%;
       }
-
       .container_monsterball {
         position: absolute;
         z-index: 1;
@@ -41,12 +51,10 @@
         transform: translate(-0%, 20%);
         display: flex;
       }
-
       .img_monsterball {
         width: 20%;
         cursor: grab;
       }
-
       .container_talk {
         position: absolute;
         z-index: 1;
@@ -56,8 +64,7 @@
         font-size: 3vw;
         white-space: nowrap;
       }
-
-      .img_soon {
+      .img_sun {
         position: absolute;
         z-index: 1;
         top: 50%;
@@ -65,7 +72,6 @@
         transform: translate(-30%, -50%);
         width: 35%;
       }
-
       .img_meta {
         position: absolute;
         z-index: 1;
@@ -75,29 +81,79 @@
         width: 30%;
         transition: opacity 2s, filter 2s;
       }
-
       .img_bright {
         /* 2초동안 유지 */
         animation: bright 2s forwards;
       }
-
+      #container_modal {
+        position: absolute;
+        z-index: 4;
+        background-color: aliceblue;
+        width: 65%;
+        height: 80%;
+      }
       @keyframes bright {
         0% {
           opacity: 1;
           /* 밝기증가와 흐림도? */
           filter: brightness(1.5) blur(4px);
         }
-
         100% {
           opacity: 0;
           filter: brightness(1) blur(0);
         }
       }
+
+      .img_monsterball:hover {
+        /* 회전속도 */
+        animation: continuous-rotate 1s linear infinite;
+      }
+
+      @keyframes continuous-rotate {
+        from {
+          /* img_monsterball 회전 */
+          transform: rotate(0deg);
+        }
+
+        to {
+          transform: rotate(-360deg);
+        }
+      }
+
+      .container_audio {
+        position: fixed;
+        bottom: 5%;
+        right: 5%;
+        z-index: 2;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .audio_control {
+        background: transparent;
+        border: none;
+        padding: 10px;
+        font-size: 2rem;
+        color: #fff;
+        cursor: pointer;
+        transition: color 0.3s;
+      }
+
+      .audio_control:hover {
+        color: #ffeb3b;
+      }
     </style>
   </head>
-
   <body>
     <div class="main-container">
+      <!-- audio 추가 -->
+      <audio id="bgm" src="src/audio/poke__bgm.mp3" loop></audio>
+      <div class="container_audio">
+        <button class="audio_control" id="audio-bgm">
+          <i class="fa-solid fa-volume-xmark"></i>
+        </button>
+      </div>
       <img class="img_main" src="src/img/html_main.jpg" alt="main_img" />
       <div class="container_monsterball">
         <img
@@ -133,7 +189,7 @@
                 <span class="font_l">앗! 야생의 메타몽이 튀어나왔다!</span>
             </div>
         </div> -->
-      <img class="img_soon" src="src/img/soon.png" alt="soon" />
+      <img class="img_sun" src="src/img/sun.png" alt="sun" />
       <img
         id="meta_mong"
         class="img_meta"
@@ -141,35 +197,73 @@
         alt="meta_mong"
       />
     </div>
+    <div id="shadow-container" style="visibility: hidden"></div>
+    <div id="container_modal" style="visibility: hidden">
+      <iframe src="modal.html" id="modal" style="width: 100%; height: 100%"
+        >대체 내용</iframe
+      >
+    </div>
 
     <script>
       const metaMong = document.getElementById("meta_mong");
+      const modal = document.getElementById("container_modal");
+      const bg_shadow = document.getElementById("shadow-container");
+      const pauseIcon = '<i class="fa-solid fa-volume-high"></i>';
+      const playIcon = '<i class="fa-solid fa-volume-xmark"></i>';
       // console.log(metaMong);
       // const metaMong2 = document.getElementsByClassName('img_meta')
       // console.log(metaMong2);
-
       metaMong.addEventListener("dragover", (event) => {
         event.preventDefault();
       });
-
       metaMong.addEventListener("drop", (event) => {
         event.preventDefault();
         metaMong.classList.add("img_bright");
         const meta = document.getElementById("meta_talk");
         meta.innerText = "아 아쉽다. 메타몽은 변신을 썻다.";
-
+        setTimeout(() => {
+          showModal();
+        }, 1000);
         //4초 후에 나오게 하기
         setTimeout(() => {
           metaMong.classList.remove("img_bright");
           metaMong.style.opacity = "1";
-          meta.innerText = "**은 뭐를 할까?";
+          meta.innerText = "순범은 누구를 내보낼까?";
         }, 4000);
-
         // const meta = document.getElementById('meta_talk');
         // meta.innerText = "아 아쉽다" <br> "메타몽은 변신을 썻다."
         // console.log(typeof meta);
         // console.log(document.getElementById('meta_talk'));
       });
+
+      bg_shadow.addEventListener("click", () => {
+        closeModal();
+      });
+
+      function showModal() {
+        modal.style.visibility = "visible";
+        bg_shadow.style.visibility = "visible";
+      }
+
+      function closeModal() {
+        modal.style.visibility = "hidden";
+        bg_shadow.style.visibility = "hidden";
+      }
+
+      const audioBgm = document.getElementById("audio-bgm");
+      audioBgm.addEventListener("click", () => {
+        if (bgm.paused) {
+          bgm.play();
+          audioBgm.innerHTML = pauseIcon;
+        } else {
+          bgm.pause();
+          audioBgm.innerHTML = playIcon;
+        }
+      });
     </script>
+    <script
+      src="https://kit.fontawesome.com/71323f225b.js"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
