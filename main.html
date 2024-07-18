@@ -189,7 +189,9 @@
         metaMong.classList.add("img_bright");
         const meta = document.getElementById("meta_talk");
         meta.innerText = "아 아쉽다. 메타몽은 변신을 썻다.";
-        showModal();
+        setTimeout(() => {
+          showModal();
+        }, 1000);
         //4초 후에 나오게 하기
         setTimeout(() => {
           metaMong.classList.remove("img_bright");
