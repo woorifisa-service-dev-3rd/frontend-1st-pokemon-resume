@@ -24,9 +24,11 @@
 - [라이브 데모](https://woorifisa-service-dev-3rd.github.io/frontend-1st-poketmon-resume/)
 
 - 데스크탑
+
 ![화면 기록 2024-07-19 오전 3 00 12 (1)](https://github.com/user-attachments/assets/d4729c1c-e9ce-46e1-ae31-ad4b87c24f9f)
 
 - 모바일
+
 ![화면 기록 2024-07-19 오전 2 59 47](https://github.com/user-attachments/assets/6e2f40cb-e001-4170-a364-254d07c74c94)
 
 <br>
