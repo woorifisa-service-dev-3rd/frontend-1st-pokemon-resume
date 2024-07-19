@@ -19,7 +19,9 @@
 
 <br>
 
-## 🖥️ 시연 영상
+## 🖥️ 데모 링크 / 시연 영상
+
+- [라이브 데모](https://woorifisa-service-dev-3rd.github.io/frontend-1st-poketmon-resume/)
 
 - 데스크탑
 ![화면 기록 2024-07-19 오전 3 00 12 (1)](https://github.com/user-attachments/assets/d4729c1c-e9ce-46e1-ae31-ad4b87c24f9f)
@@ -39,8 +41,8 @@ HTML, CSS, JS를 활용한 자기소개 페이지입니다.
 ## 💻 주요 코드
 
 ### HTML
-- layout, container, content로 구조적으로 잘 갖춰진 코드
-- 반응형을 고려한 계층적 태그 설계
+- layout, container, content로 구조적으로 잘 갖춰진 문서
+- 추후에 컴포넌트 분리를 고려하여 작성한 HTML 문서
 
 ### CSS
 - 반응형 스타일을 적용하여 다양한 접속 환경에서 사용 가능
