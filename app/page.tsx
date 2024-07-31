@@ -10,9 +10,9 @@ const textState = atom<string>({
 });
 
 export const textArea = atom<string>({
-  key:'1',
-  default:"나는 구황작물"
-})
+  key: "1",
+  default: "나는 구황작물",
+});
 
 export default function Home() {
   const [text, setText] = useRecoilState(textState);
@@ -24,8 +24,20 @@ export default function Home() {
           ㅁㄹㅇㅁㅇㄴㄹ&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
         </p>
-        <Button onClick={()=>{setText('홀리몰리 감자감자')}}>{text}</Button>
-        <Button onClick={()=>{setTitle('홀리몰리 고구마몰리')}}>{title}</Button>
+        <Button
+          onClick={() => {
+            setText("홀리몰리 감자감자");
+          }}
+        >
+          {text}
+        </Button>
+        <Button
+          onClick={() => {
+            setTitle("홀리몰리 고구마몰리");
+          }}
+        >
+          {title}
+        </Button>
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
