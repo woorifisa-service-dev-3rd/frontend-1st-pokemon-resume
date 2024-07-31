@@ -2,7 +2,7 @@ export interface Users {
   id: string;
   password: string;
   phone: string;
-  user_info: Resume;
+  user_info: UserInfo;
 }
 
 export type DueDate = '1month' | '2month' | '3month' |
@@ -10,16 +10,16 @@ export type DueDate = '1month' | '2month' | '3month' |
                       '7month' | '8month' | '9month' | 
                       '10month' | '11month' | '12month';
 
-export interface Resume {
+export interface UserInfo {
   name: string;
   age: number;
   email: string;
-  stack: Skill[];
+  skill_stack: Skill[];
   profile_img: string;
-  github: string;
-  projectDue: DueDate;
+  github_id: string;
+  project_due: DueDate;
 }
 export interface Skill {
   name: string;
-  img: string;
+  img_url: string;
 }
