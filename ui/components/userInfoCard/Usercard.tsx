@@ -48,9 +48,6 @@ const dummyText = atom<string>({
 const Usercard = () => {
   const [info, setInfo] = useRecoilState(dummyText);
   const parsedInfo = JSON.parse(info);
-  const windowWidth = window.innerWidth;
-
-  console.log(windowWidth)
 
   return (
     <div className="relative flex h-full w-full" style={{ minWidth: "30vw", color: '#181818' }}>
