@@ -48,33 +48,61 @@ const dummyText = atom<string>({
 const Usercard = () => {
   const [info, setInfo] = useRecoilState(dummyText);
   const parsedInfo = JSON.parse(info);
+  const windowWidth = window.innerWidth;
+
+  console.log(windowWidth)
 
   return (
-    <div className="relative flex h-full w-full">
+    <div className="relative flex h-full w-full" style={{ minWidth: "30vw", color: '#181818' }}>
       <Image
         src="/images/Img_userProfile.png"
         alt="background"
         layout="fill"
         objectFit="fill"
       />
-      <div className="absolute z-10" style={{ padding: "1rem" }}>
-        <p style={{ fontSize: "2.0rem", lineHeight: 0 }}>
+      <div className="absolute z-10" style={{}}>
+        <div style={{ height: "10vh", fontSize: "4vh", padding: "1.2vh" }}>
           {parsedInfo.user_info.github_id}
-        </p>
-        <div className="relative flex justify-center items-center">
-          <img src={parsedInfo.user_info.profile_img} alt="profileImg" />
-          <div className="absolute bottom-0 right-0 flex flex-col items-end">
-            {parsedInfo.user_info.skill_stack.map((it) => (
-              <SkillStack skill={it} key={it.name} />
-            ))}
-          </div>
         </div>
-        <p style={{ fontSize: "1.2rem", marginTop: "1rem" }}>
+        <div
+          style={{
+            padding: "1.5vh",
+            marginRight: "1.2vw",
+            paddingTop: "0px",
+            height: "40vh",
+            width: "30vw",
+          }}
+        >
+          <img
+            style={{ width: "100%" }}
+            src={parsedInfo.user_info.profile_img}
+            alt="profileImg"
+          />
+        </div>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "space-around",
+            width: "30vw",
+            alignItems: "flex-end",
+            position: 'absolute',
+            right: '7%',
+            top: '55%',
+          }}
+        >
+          {parsedInfo.user_info.skill_stack.map((it) => (
+            <SkillStack skill={it} key={it.name} />
+          ))}
+        </div>
+        <div style={{position:'absolute', left: 2, top: '71.5%'}}>
+        <div style={{ height: "10vh", fontSize: "4vh", padding: "2vh" }}>
           이름 : {parsedInfo.user_info.name}
-        </p>
-        <div style={{ marginTop: "1rem" }}>
+        </div>
+        <div style={{ height: "10vh", fontSize: "2.5vh", padding: "2vh" }}>
           <p>나이 : {parsedInfo.user_info.age}</p>
           <p>원하는 프로젝트기한 : {parsedInfo.user_info.project_due}</p>
+        </div>
         </div>
       </div>
     </div>

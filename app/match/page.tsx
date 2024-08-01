@@ -25,7 +25,7 @@ const MatchPage = ({ children }: React.PropsWithChildren) => (
     <div className="grow-0 m-10">
       <Usercard />
     </div>
-    <div className="grow m-10">
+    <div className="grow" style={{display:'flex', alignItems:'center'}}>
       <UserList />
     </div>
     <div className="grow-0 m-10 flex items-end">
