@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
-import { signIn } from "@/lib/utils/auth";
+import { signUp } from "@/lib/utils/auth";
 
 type FieldType = {
   username?: string;
@@ -40,8 +40,8 @@ const App: React.FC = () => {
     setIsSignUpModalOpen(true);
   };
 
-  const handleSignUpOk = (e: Event) => {
-    const target = e.target as HTMLInputElement;
+  const handleSignUpOk = (e: React.MouseEvent<HTMLButtonElement>) => {
+    const target = e.target;
     console.log(target);
 
     setIsSignUpModalOpen(false);
