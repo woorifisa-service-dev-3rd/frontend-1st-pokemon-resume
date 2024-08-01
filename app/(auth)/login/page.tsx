@@ -2,6 +2,7 @@
 import React, { useState } from "react";
 import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
+import { signIn } from "@/lib/utils/auth";
 
 type FieldType = {
   username?: string;
@@ -18,9 +19,10 @@ const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
 };
 
 const App: React.FC = () => {
-  const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] =
-    useState(false);
+  const [isResetPasswordModalOpen, setIsResetPasswordModalOpen] = useState(false);
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   const showResetPasswordModal = () => {
     setIsResetPasswordModalOpen(true);
@@ -38,7 +40,10 @@ const App: React.FC = () => {
     setIsSignUpModalOpen(true);
   };
 
-  const handleSignUpOk = () => {
+  const handleSignUpOk = (e: Event) => {
+    const target = e.target as HTMLInputElement;
+    console.log(target);
+
     setIsSignUpModalOpen(false);
   };
 
@@ -66,7 +71,7 @@ const App: React.FC = () => {
           name="username"
           rules={[{ required: true, message: "Please input your username!" }]}
         >
-          <Input />
+          <Input onChange={(e) => setEmail(e.target.value)} />
         </Form.Item>
 
         <Form.Item<FieldType>
@@ -74,14 +79,10 @@ const App: React.FC = () => {
           name="password"
           rules={[{ required: true, message: "Please input your password!" }]}
         >
-          <Input.Password />
+          <Input.Password onChange={(e) => setPassword(e.target.value)} />
         </Form.Item>
 
-        <Form.Item<FieldType>
-          name="remember"
-          valuePropName="checked"
-          wrapperCol={{ span: 16 }}
-        >
+        <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ span: 16 }}>
           <Checkbox>Remember me</Checkbox>
         </Form.Item>
 
@@ -110,9 +111,7 @@ const App: React.FC = () => {
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
           onFinish={(values) => console.log("Password Reset Success:", values)}
-          onFinishFailed={(errorInfo) =>
-            console.log("Password Reset Failed:", errorInfo)
-          }
+          onFinishFailed={(errorInfo) => console.log("Password Reset Failed:", errorInfo)}
         >
           <Form.Item<FieldType>
             label="새 비밀번호"
@@ -141,9 +140,7 @@ const App: React.FC = () => {
                   if (!value || getFieldValue("newPassword") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error("비밀번호가 일치하지 않습니다.")
-                  );
+                  return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
                 },
               }),
             ]}
@@ -153,20 +150,14 @@ const App: React.FC = () => {
         </Form>
       </Modal>
 
-      <Modal
-        open={isSignUpModalOpen}
-        onOk={handleSignUpOk}
-        onCancel={handleSignUpCancel}
-      >
+      <Modal open={isSignUpModalOpen} onOk={handleSignUpOk} onCancel={handleSignUpCancel}>
         <Form
           name="sign_up"
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{ maxWidth: 600 }}
           onFinish={(values) => console.log("Sign Up Success:", values)}
-          onFinishFailed={(errorInfo) =>
-            console.log("Sign Up Failed:", errorInfo)
-          }
+          onFinishFailed={(errorInfo) => console.log("Sign Up Failed:", errorInfo)}
         >
           <Form.Item<FieldType>
             label="ID(이메일)"
@@ -196,9 +187,7 @@ const App: React.FC = () => {
                   if (!value || getFieldValue("password") === value) {
                     return Promise.resolve();
                   }
-                  return Promise.reject(
-                    new Error("비밀번호가 일치하지 않습니다.")
-                  );
+                  return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
                 },
               }),
             ]}
