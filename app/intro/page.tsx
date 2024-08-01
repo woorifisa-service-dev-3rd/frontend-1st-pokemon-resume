@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import { Form, Input, Button, Upload, message, Select } from 'antd';
+import { PlusOutlined } from '@ant-design/icons';
 import { RcFile } from 'antd/es/upload';
 import { User, Skill, DueDate } from '@/lib/types/type';
 import { add } from '@/lib/utils/db';
@@ -70,6 +71,13 @@ const ProfileSetupPage: React.FC = () => {
             message.error('Failed to update profile');
         }
     };
+    const normFile = (e: any) => {
+      if (Array.isArray(e)) {
+        return e;
+      }
+      return e?.fileList;
+    };
+    
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 w-screen">
@@ -125,12 +133,27 @@ const ProfileSetupPage: React.FC = () => {
                             },
                         ]}
                         className="mx-auto max-w-full"
-
                     >
                         <Input className="w-full px-4 py-2 border border-gray-300 rounded-md" />
                     </Form.Item>
 
                     <Form.Item
+                        label="프로필 이미지"
+                        name="profileImg"
+                        rules={[{ required: true, message: '프로필 이미지를 넣어주세요!' }]}
+                        getValueFromEvent={normFile}
+                    >
+                        <Upload action="/upload.do" listType="picture-card">
+                            <button
+                                style={{ border: 0, background: 'none' }}
+                                type="button"
+                            >
+                                <PlusOutlined />
+                                <div style={{ marginTop: 8 }}>Upload</div>
+                            </button>
+                        </Upload>
+                    </Form.Item>
+                    {/* <Form.Item
                         label="프로필 이미지"
                         name="profileImg"
                         className="mx-auto w-full max-w-sm"
@@ -148,12 +171,9 @@ const ProfileSetupPage: React.FC = () => {
                                 Upload Profile Picture
                             </Button>
                         </Upload>
-                    </Form.Item>
+                    </Form.Item> */}
 
-                    <Form.Item
-                        label="기술 스택"
-                        className="mx-auto w-full"
-                    >
+                    <Form.Item label="기술 스택" className="mx-auto w-full">
                         <SkillSelector
                             onSkillsSelected={handleSkillsSelected}
                         />
