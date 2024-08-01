@@ -19,3 +19,11 @@ export const upload = (file: File) => {
       console.error("업로드 실패", error);
     });
 };
+
+
+export const getimg = async () => {
+  const starsRef = ref(storage, 'profile/image.png');
+  const url = await getDownloadURL(starsRef);
+  console.log(url);
+  return url;
+}

@@ -4,8 +4,8 @@
 import Image from "next/image";
 import { atom, useRecoilState } from "recoil";
 import { Button, Input } from "antd";
-import { upload } from "@/lib/utils/storage";
-import { useState } from "react";
+import { upload, getimg } from "@/lib/utils/storage";
+import { useRef, useState } from "react";
 
 // Define Recoil atoms for state management
 const textState = atom<string>({
@@ -24,6 +24,8 @@ export default function Home() {
   const [title, setTitle] = useRecoilState(textArea);
   const [file, setFile] = useState<File | null>(null);
 
+  const image = useRef();
+
   // Handler for file input change
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files && event.target.files[0]) {
@@ -40,6 +42,11 @@ export default function Home() {
     }
   };
 
+  const handleGetimg = async () => {
+      const url = await getimg();
+      image.current.src = url;
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -53,6 +60,10 @@ export default function Home() {
         {/* 업로드 */}
         <Input type="file" onChange={handleFileChange} />
         <Button onClick={handleUpload} disabled={!file}>Upload File</Button>
+
+        <Button onClick={handleGetimg}>GET IMG File</Button>
+        <img src="" ref={image}></img>
+        
 
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
