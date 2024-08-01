@@ -39,6 +39,8 @@ export const logIn = (email: string, password: string) => {
       const user = userCredential.user;
       // TODO: 로그인 후 처리 로직
       getById("users", user.uid);
+
+      location.replace("/");
     })
     .catch((error) => {
       const errorCode = error.code;

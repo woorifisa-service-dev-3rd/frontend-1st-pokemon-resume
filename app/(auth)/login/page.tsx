@@ -1,17 +1,18 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
-import { signUp } from "@/lib/utils/auth";
+import { logIn, signUp } from "@/lib/utils/auth";
+import { User } from "@/lib/types/type";
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  username: string;
+  password: string;
 };
 
 const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
   console.log("Success:", values);
+  logIn(values.username, values.password);
 };
 
 const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
@@ -27,10 +28,12 @@ const App: React.FC = () => {
     setIsSignUpModalOpen(true);
   };
 
-  const handleSignUpOk = (e: React.MouseEvent<HTMLButtonElement>) => {
-    const target = e.target;
-    console.log(target);
+  const handleSignUpOk = () => {
+    if (email !== "" && password !== "") {
+      console.log(email, password, "hi");
 
+      signUp(email, password, {} as User);
+    }
     setIsSignUpModalOpen(false);
   };
 
@@ -109,14 +112,17 @@ const App: React.FC = () => {
               name="username"
               rules={[{ required: true, message: "Please input your username!" }]}
             >
-              <Input autoComplete="off" />
+              <Input autoComplete="off" onChange={(e) => setEmail(e.target.value)} />
             </Form.Item>
             <Form.Item<FieldType>
               label="Password"
               name="password"
               rules={[{ required: true, message: "Please input your password!" }]}
             >
-              <Input.Password placeholder="6자 이상" />
+              <Input.Password
+                placeholder="6자 이상"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Item>
             <Form.Item<FieldType>
               label="Password 확인"
