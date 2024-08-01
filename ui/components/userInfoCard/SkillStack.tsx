@@ -7,7 +7,6 @@ const SkillStack = ({ skill }) => {
     <div>
       {/* <Image src={img_url} alt={name} width={100} height={100} /> */}
       <img src={img_url} alt={name} width={100} height={100} />
-      <p>{name}</p>
     </div>
   );
 };

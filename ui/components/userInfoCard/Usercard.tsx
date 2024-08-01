@@ -17,6 +17,11 @@ const dummy = {
         img_url:
           "https://modulabs.co.kr/wp-content/uploads/2023/11/image-1536x864.jpeg",
       },
+      {
+        name: "javascript",
+        img_url:
+          "https://modulabs.co.kr/wp-content/uploads/2023/11/image-1536x864.jpeg",
+      },
     ],
     profile_img:
       "https://item.kakaocdn.net/do/e1d0824bada446f1fd181dd22f65adfc8f324a0b9c48f77dbce3a43bd11ce785",
@@ -37,20 +42,20 @@ const Usercard = () => {
   return (
     <>
       <div>Usercard</div>
-      <h1>{parsedInfo.user_info.github_id}</h1>
+      <p className="text-2xl w-9">{parsedInfo.user_info.github_id}</p>
       <Image
         width={200}
         src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
         alt="profileImg"
       />
-      <div>
+      <div style={flex}>
         {parsedInfo.user_info.skill_stack.map((it) => (
           <SkillStack skill={it} key={it} />
         ))}
       </div>
-      <p>이름 : {parsedInfo.user_info.name}</p>
+      <p className="text-lg font-medium">이름 : {parsedInfo.user_info.name}</p>
       <p>나이 : {parsedInfo.user_info.age}</p>
-      <p>플젝기한 : {parsedInfo.user_info.project_due}</p>
+      <p>원하는 프로젝트기한 : {parsedInfo.user_info.project_due}</p>
     </>
   );
 };
