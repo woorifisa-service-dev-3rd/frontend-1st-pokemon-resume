@@ -1,5 +1,5 @@
 import { app } from "./firebaseApp";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "firebase/auth";
 import { add, getById } from "@/lib/utils/db";
 import { User } from "@/lib/types/type";
 
@@ -41,3 +41,21 @@ export const logIn = (email: string, password: string) => {
       console.log(errorCode, errorMessage);
     });
 };
+
+//로그아웃
+export const logOut = () => {
+  console.log("시이이이이작")
+  console.log(auth);
+
+
+  signOut(auth).then(() => {
+    console.log("로그아웃")
+    console.log(auth);
+  }).catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage);
+    // An error happened.
+  });
+
+}

@@ -1,6 +1,35 @@
 import Image from "next/image";
+import { signIn, logIn, logOut } from "@/lib/utils/auth";
+import {User} from "@/lib/types/type"
 
 export default function Home() {
+  const user: User = {
+    id: "",
+    email: "",
+    password: "",
+    user_info: {
+      name: "홍찬의",
+      age: 25,
+      phone: "010-0000-0000",
+      skill_stack: [
+        {
+          name: "javascript",
+          img_url: "https://modulabs.co.kr/wp-content/uploads/2023/11/image-1536x864.jpeg",
+        },
+      ],
+      profile_img:
+        "https://item.kakaocdn.net/do/e1d0824bada446f1fd181dd22f65adfc8f324a0b9c48f77dbce3a43bd11ce785",
+      github_id: "apple",
+      project_due: "12month",
+    },
+    team: [],
+  };
+  // signIn("test2@gmail.com", "222223", user);
+  logIn("test@gmail.com", "222223");
+  setTimeout(() => {
+    logOut();
+  }, 3000);
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
