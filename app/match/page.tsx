@@ -7,6 +7,7 @@ import { Inter } from "next/font/google";
 import { Flex, Layout } from "antd";
 import UserIcon from "@/ui/components/match/UserIcon";
 import UserList from "@/ui/components/match/UserList";
+import Usercard from "@/ui/components/userInfoCard/Usercard";
 
 const { Header, Footer, Sider, Content } = Layout;
 
@@ -22,7 +23,9 @@ const RootLayout = ({ children }: React.PropsWithChildren) => (
     }}
   >
     {/* <Header>포켓몬 뚜따</Header> */}
-    <Content>감자감자야</Content>
+    <Content>
+      <Usercard />
+    </Content>
     <Content>
       <UserList />
     </Content>
