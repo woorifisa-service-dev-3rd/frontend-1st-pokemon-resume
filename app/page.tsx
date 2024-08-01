@@ -18,16 +18,10 @@ export const textArea = atom<string>({
 export default function Home() {
   const [text, setText] = useRecoilState(textState);
   const [title, setTitle] = useRecoilState(textArea);
+
   return (
-    <div
-      className="flex flex-row w-screen h-screen relative"
-      style={{ padding: '15vh 15vw' }}
-    >
-      <Image
-        src="/images/스크린샷 2024-08-01 오후 1.52.25.png"
-        alt="background"
-        layout="fill"
-      />
+    <div className="flex flex-row w-screen h-screen relative" style={{ padding: "15vh 15vw" }}>
+      <Image src="/images/스크린샷 2024-08-01 오후 1.52.25.png" alt="background" layout="fill" />
       <MainContainer />
       {/* <div
         className="z-10 w-full h-full"

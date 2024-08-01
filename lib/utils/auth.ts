@@ -33,20 +33,21 @@ export const signUp = (email: string, password: string, data: User) => {
 };
 
 // 로그인
-export const logIn = (email: string, password: string) => {
-  signInWithEmailAndPassword(auth, email, password)
+export const logIn = async (email: string, password: string) => {
+  let uid = "";
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       // TODO: 로그인 후 처리 로직
-      getById("users", user.uid);
-
-      location.replace("/");
+      const id = getById("users", user.uid);
+      uid = user.uid;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
     });
+  return uid;
 };
 
 //로그아웃

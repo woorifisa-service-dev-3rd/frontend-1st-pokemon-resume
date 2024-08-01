@@ -4,25 +4,27 @@ import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
 import { logIn, signUp } from "@/lib/utils/auth";
 import { User } from "@/lib/types/type";
+import { atom, useRecoilState } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
+
+export const userIdAtom = atom<string>({
+  key: "userId",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 
 type FieldType = {
   username: string;
   password: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-  logIn(values.username, values.password);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
-const App: React.FC = () => {
+export default function Login() {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [uid, setUid] = useRecoilState(userIdAtom);
 
   const showSignUpModal = () => {
     setIsSignUpModalOpen(true);
@@ -30,8 +32,6 @@ const App: React.FC = () => {
 
   const handleSignUpOk = () => {
     if (email !== "" && password !== "") {
-      console.log(email, password, "hi");
-
       signUp(email, password, {} as User);
     }
     setIsSignUpModalOpen(false);
@@ -39,6 +39,19 @@ const App: React.FC = () => {
 
   const handleSignUpCancel = () => {
     setIsSignUpModalOpen(false);
+  };
+
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    console.log("Success:", values);
+    const result = await logIn(values.username, values.password);
+    setUid(result);
+    console.log(result);
+
+    location.replace("/");
+  };
+
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
+    console.log("Failed:", errorInfo);
   };
 
   return (
@@ -150,6 +163,6 @@ const App: React.FC = () => {
       </div>
     </>
   );
-};
+}
 
-export default App;
+// export default App;
