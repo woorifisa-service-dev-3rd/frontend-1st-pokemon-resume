@@ -4,9 +4,8 @@ import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  username: string;
+  password: string;
 };
 
 const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
@@ -39,6 +38,7 @@ const App: React.FC = () => {
           justifyContent: "center",
           alignItems: "center",
           height: "100vh",
+          width: 800,
         }}
       >
         <Form
@@ -46,7 +46,7 @@ const App: React.FC = () => {
           labelCol={{ span: 8 }}
           wrapperCol={{ span: 16 }}
           style={{
-            width: "fit-content",
+            width: 400,
           }}
           initialValues={{ remember: true }}
           onFinish={onFinish}
@@ -74,15 +74,6 @@ const App: React.FC = () => {
           >
             <Input.Password style={{ width: 400 }} />
           </Form.Item>
-
-          <Form.Item<FieldType>
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ span: 16 }}
-          >
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
           <Form.Item wrapperCol={{ span: 16 }}>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button type="primary" htmlType="submit">
