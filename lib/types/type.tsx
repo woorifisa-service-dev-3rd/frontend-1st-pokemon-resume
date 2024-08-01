@@ -37,3 +37,7 @@ export interface Skill {
   name: string;
   img_url: string;
 }
+
+export interface UserIconProps {
+  user: User | undefined;
+}

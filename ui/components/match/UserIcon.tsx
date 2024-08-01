@@ -2,9 +2,9 @@ import React from "react";
 import { DownloadOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 import Image from "next/image";
-import { User } from "../../../lib/types/type";
+import { User, UserIconProps } from "../../../lib/types/type";
 
-const UserIcon = (user?: User) => {
+const UserIcon = ({user} : UserIconProps) => {
   return (
     <button
       style={{
@@ -14,7 +14,7 @@ const UserIcon = (user?: User) => {
         // , boxShadow: '1px 1px 1px 0 rgba(0, 0, 0, 0.2)', borderRadius: '0.9rem'
       }}
     >
-      {user.id ? (
+      { user ? (
         <img src={`${user.user_info.profile_img}`} alt="user-icon" />
       ) : (
         <Image
