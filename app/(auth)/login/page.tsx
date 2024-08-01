@@ -3,22 +3,9 @@ import React, { useEffect, useState } from "react";
 import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
 import { logIn, signUp } from "@/lib/utils/auth";
-import { User } from "@/lib/types/type";
-import { atom, useRecoilState } from "recoil";
-import { recoilPersist } from "recoil-persist";
-
-const { persistAtom } = recoilPersist();
-
-export const userIdAtom = atom<string>({
-  key: "userId",
-  default: "",
-  effects_UNSTABLE: [persistAtom],
-});
-
-type FieldType = {
-  username: string;
-  password: string;
-};
+import { FieldType, User } from "@/lib/types/type";
+import { useRecoilState } from "recoil";
+import { userIdAtom } from "@/lib/atoms/loginedUserIdAtom";
 
 export default function Login() {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
@@ -50,7 +37,9 @@ export default function Login() {
     location.replace("/");
   };
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
+    errorInfo
+  ) => {
     console.log("Failed:", errorInfo);
   };
 
@@ -84,7 +73,10 @@ export default function Login() {
             name="username"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
-            <Input style={{ width: 400 }} placeholder="이메일 형식으로 입력하시오." />
+            <Input
+              style={{ width: 400 }}
+              placeholder="이메일 형식으로 입력하시오."
+            />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -95,7 +87,11 @@ export default function Login() {
             <Input.Password style={{ width: 400 }} />
           </Form.Item>
 
-          <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ span: 16 }}>
+          <Form.Item<FieldType>
+            name="remember"
+            valuePropName="checked"
+            wrapperCol={{ span: 16 }}
+          >
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
@@ -104,33 +100,50 @@ export default function Login() {
               <Button type="primary" htmlType="submit">
                 로그인
               </Button>
-              <Button type="primary" htmlType="button" onClick={showSignUpModal}>
+              <Button
+                type="primary"
+                htmlType="button"
+                onClick={showSignUpModal}
+              >
                 회원가입
               </Button>
             </div>
           </Form.Item>
         </Form>
 
-        <Modal open={isSignUpModalOpen} onOk={handleSignUpOk} onCancel={handleSignUpCancel}>
+        <Modal
+          open={isSignUpModalOpen}
+          onOk={handleSignUpOk}
+          onCancel={handleSignUpCancel}
+        >
           <Form
             name="sign_up"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             style={{ maxWidth: 600 }}
             onFinish={(values) => console.log("Sign Up Success:", values)}
-            onFinishFailed={(errorInfo) => console.log("Sign Up Failed:", errorInfo)}
+            onFinishFailed={(errorInfo) =>
+              console.log("Sign Up Failed:", errorInfo)
+            }
           >
             <Form.Item<FieldType>
               label="ID(이메일)"
               name="username"
-              rules={[{ required: true, message: "Please input your username!" }]}
+              rules={[
+                { required: true, message: "Please input your username!" },
+              ]}
             >
-              <Input autoComplete="off" onChange={(e) => setEmail(e.target.value)} />
+              <Input
+                autoComplete="off"
+                onChange={(e) => setEmail(e.target.value)}
+              />
             </Form.Item>
             <Form.Item<FieldType>
               label="Password"
               name="password"
-              rules={[{ required: true, message: "Please input your password!" }]}
+              rules={[
+                { required: true, message: "Please input your password!" },
+              ]}
             >
               <Input.Password
                 placeholder="6자 이상"
@@ -151,7 +164,9 @@ export default function Login() {
                     if (!value || getFieldValue("password") === value) {
                       return Promise.resolve();
                     }
-                    return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
+                    return Promise.reject(
+                      new Error("비밀번호가 일치하지 않습니다.")
+                    );
                   },
                 }),
               ]}
