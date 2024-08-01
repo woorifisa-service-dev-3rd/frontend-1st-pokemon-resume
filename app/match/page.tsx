@@ -1,11 +1,8 @@
 "use client";
 
 import React from "react";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
-import { Flex, Layout } from "antd";
-import UserIcon from "@/ui/components/match/UserIcon";
+import { Layout } from "antd";
 import UserList from "@/ui/components/match/UserList";
 import SelectedUserList from "@/ui/components/match/SelectedUserList";
 import Usercard from "@/ui/components/userInfoCard/Usercard";

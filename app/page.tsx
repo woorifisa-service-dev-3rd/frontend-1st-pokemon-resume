@@ -18,7 +18,9 @@ export default function Home() {
   const [text, setText] = useRecoilState(textState);
   const [title, setTitle] = useRecoilState(textArea);
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
-    </main>
+    <>
+      {/* <button onClick={setText({"감쟈감쟈"})}></button> */}
+      <main className="flex min-h-screen flex-col items-center justify-between p-24"></main>
+    </>
   );
 }
