@@ -17,6 +17,11 @@ const inter = Inter({ subsets: ["latin"] });
 
 const MatchPage = ({ children }: React.PropsWithChildren) => (
   <div className="flex flex-row w-screen h-screen">
+    <Image
+      src="/images/Img_backgroundDark.png"
+      alt="background"
+      layout="fill"
+    />
     <div className="grow-0 m-10">
       <Usercard />
     </div>
