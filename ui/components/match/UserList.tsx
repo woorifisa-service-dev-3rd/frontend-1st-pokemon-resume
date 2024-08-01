@@ -59,9 +59,8 @@ const UserList = () => {
         src="/images/Img_userListBackground.png"
         alt="background"
         layout="fill"
-        objectFit="cover"
       />
-      <div className="absolute z-10 flex flex-row items-center justify-center w-full h-full">
+      <div className="absolute z-10 flex flex-row" style={{padding: '1rem'}}>
         {userDummys.map((dummy) => (
           <div key={dummy.id}>
             <UserIcon user={dummy} />
