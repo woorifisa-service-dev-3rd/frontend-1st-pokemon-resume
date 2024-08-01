@@ -13,6 +13,9 @@ export type DueDate =
   | "11month"
   | "12month";
 
+// Firestore Document Type
+export type DocType = User;
+
 // User 테이블 구조
 export interface User {
   id: string; // firebase 해시 값
