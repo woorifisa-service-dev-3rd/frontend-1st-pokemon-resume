@@ -44,3 +44,16 @@ export interface Skill {
 export interface UserIconProps {
   user: User | undefined;
 }
+
+export interface FieldType {
+  username: string;
+  password: string;
+};
+
+export interface UserList {
+  id: string; // firebase 해시 값
+  email: string;
+  password: string;
+  user_info: UserInfo;
+  team: User[];
+}

@@ -19,18 +19,22 @@ export const add = async (col: string, id: string, data: DocType) => {
 
 // collection 전체 document 조회
 export const get = async (col: string) => {
-  const querySnapshot = await getDocs(collection(db, col));
+  let userData = []
+  const querySnapshot = await getDocs(collection(db, col))
   querySnapshot.forEach((doc) => {
-    console.log(doc.data());
+    userData = [...userData, doc.data()];
+    // console.log(doc.data());
   });
+  return userData;
 };
 
 // collection에서 id 값으로 document 조회
 export const getById = async (col: string, id: string) => {
   const q = query(collection(db, col), where("id", "==", id));
   const querySnapshot = await getDocs(q);
+  console.log(querySnapshot.docs[0].data());
 
-  return querySnapshot.docs[0].id;
+  return querySnapshot.docs[0].data();
 };
 
 // collection에서 특정 document 수정
