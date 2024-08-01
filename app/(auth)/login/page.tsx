@@ -1,36 +1,59 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import type { FormProps } from "antd";
 import { Modal, Button, Checkbox, Form, Input } from "antd";
+import { logIn, signUp } from "@/lib/utils/auth";
+import { User } from "@/lib/types/type";
+import { atom, useRecoilState } from "recoil";
+import { recoilPersist } from "recoil-persist";
+
+const { persistAtom } = recoilPersist();
+
+export const userIdAtom = atom<string>({
+  key: "userId",
+  default: "",
+  effects_UNSTABLE: [persistAtom],
+});
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  username: string;
+  password: string;
 };
 
-const onFinish: FormProps<FieldType>["onFinish"] = (values) => {
-  console.log("Success:", values);
-};
-
-const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
-  console.log("Failed:", errorInfo);
-};
-
-const App: React.FC = () => {
+export default function Login() {
   const [isSignUpModalOpen, setIsSignUpModalOpen] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [uid, setUid] = useRecoilState(userIdAtom);
 
   const showSignUpModal = () => {
     setIsSignUpModalOpen(true);
   };
 
   const handleSignUpOk = () => {
+    if (email !== "" && password !== "") {
+      signUp(email, password, {} as User);
+    }
     setIsSignUpModalOpen(false);
   };
 
   const handleSignUpCancel = () => {
     setIsSignUpModalOpen(false);
   };
+
+  const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
+    console.log("Success:", values);
+    const result = await logIn(values.username, values.password);
+    setUid(result);
+    console.log(result);
+
+    location.replace("/");
+  };
+
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
+    console.log("Failed:", errorInfo);
+  };
+
   return (
     <>
       <div
@@ -61,10 +84,7 @@ const App: React.FC = () => {
             name="username"
             rules={[{ required: true, message: "Please input your username!" }]}
           >
-            <Input
-              style={{ width: 400 }}
-              placeholder="이메일 형식으로 입력하시오."
-            />
+            <Input style={{ width: 400 }} placeholder="이메일 형식으로 입력하시오." />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -75,11 +95,7 @@ const App: React.FC = () => {
             <Input.Password style={{ width: 400 }} />
           </Form.Item>
 
-          <Form.Item<FieldType>
-            name="remember"
-            valuePropName="checked"
-            wrapperCol={{ span: 16 }}
-          >
+          <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ span: 16 }}>
             <Checkbox>Remember me</Checkbox>
           </Form.Item>
 
@@ -88,49 +104,38 @@ const App: React.FC = () => {
               <Button type="primary" htmlType="submit">
                 로그인
               </Button>
-              <Button
-                type="primary"
-                htmlType="button"
-                onClick={showSignUpModal}
-              >
+              <Button type="primary" htmlType="button" onClick={showSignUpModal}>
                 회원가입
               </Button>
             </div>
           </Form.Item>
         </Form>
 
-        <Modal
-          open={isSignUpModalOpen}
-          onOk={handleSignUpOk}
-          onCancel={handleSignUpCancel}
-        >
+        <Modal open={isSignUpModalOpen} onOk={handleSignUpOk} onCancel={handleSignUpCancel}>
           <Form
             name="sign_up"
             labelCol={{ span: 8 }}
             wrapperCol={{ span: 16 }}
             style={{ maxWidth: 600 }}
             onFinish={(values) => console.log("Sign Up Success:", values)}
-            onFinishFailed={(errorInfo) =>
-              console.log("Sign Up Failed:", errorInfo)
-            }
+            onFinishFailed={(errorInfo) => console.log("Sign Up Failed:", errorInfo)}
           >
             <Form.Item<FieldType>
               label="ID(이메일)"
               name="username"
-              rules={[
-                { required: true, message: "Please input your username!" },
-              ]}
+              rules={[{ required: true, message: "Please input your username!" }]}
             >
-              <Input autoComplete="off" />
+              <Input autoComplete="off" onChange={(e) => setEmail(e.target.value)} />
             </Form.Item>
             <Form.Item<FieldType>
               label="Password"
               name="password"
-              rules={[
-                { required: true, message: "Please input your password!" },
-              ]}
+              rules={[{ required: true, message: "Please input your password!" }]}
             >
-              <Input.Password placeholder="6자 이상" />
+              <Input.Password
+                placeholder="6자 이상"
+                onChange={(e) => setPassword(e.target.value)}
+              />
             </Form.Item>
             <Form.Item<FieldType>
               label="Password 확인"
@@ -146,9 +151,7 @@ const App: React.FC = () => {
                     if (!value || getFieldValue("password") === value) {
                       return Promise.resolve();
                     }
-                    return Promise.reject(
-                      new Error("비밀번호가 일치하지 않습니다.")
-                    );
+                    return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
                   },
                 }),
               ]}
@@ -160,6 +163,6 @@ const App: React.FC = () => {
       </div>
     </>
   );
-};
+}
 
-export default App;
+// export default App;

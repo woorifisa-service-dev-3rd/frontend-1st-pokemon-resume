@@ -1,5 +1,10 @@
 import { app } from "./firebaseApp";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+  signOut,
+} from "firebase/auth";
 import { add, getById } from "@/lib/utils/db";
 import { User } from "@/lib/types/type";
 
@@ -8,7 +13,7 @@ const auth = getAuth(app);
 // const password = "비밀번호 6자리 이상 작성";
 
 // 회원가입
-export const signIn = (email: string, password: string, data: User) => {
+export const signUp = (email: string, password: string, data: User) => {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
@@ -28,16 +33,37 @@ export const signIn = (email: string, password: string, data: User) => {
 };
 
 // 로그인
-export const logIn = (email: string, password: string) => {
-  signInWithEmailAndPassword(auth, email, password)
+export const logIn = async (email: string, password: string) => {
+  let uid = "";
+  await signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       // TODO: 로그인 후 처리 로직
-      getById("users", user.uid);
+      const id = getById("users", user.uid);
+      uid = user.uid;
     })
     .catch((error) => {
       const errorCode = error.code;
       const errorMessage = error.message;
       console.log(errorCode, errorMessage);
+    });
+  return uid;
+};
+
+//로그아웃
+export const logOut = () => {
+  console.log("시이이이이작");
+  console.log(auth);
+
+  signOut(auth)
+    .then(() => {
+      console.log("로그아웃");
+      console.log(auth);
+    })
+    .catch((error) => {
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      console.log(errorCode, errorMessage);
+      // An error happened.
     });
 };
