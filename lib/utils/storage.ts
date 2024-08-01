@@ -1,17 +1,21 @@
-import { getStorage, ref, uploadBytes } from "firebase/storage";
+// lib/utils/storage.ts
+import { getStorage, ref, uploadBytes, getDownloadURL } from "firebase/storage";
+import { app } from "@/lib/utils/firebaseApp";
 
-// Get a reference to the storage service, which is used to create references in your storage bucket
-const storage = getStorage();
 
-// Create a storage reference from our storage service
-const profileRef = ref(storage, "profile");
+const storage = getStorage(app);
 
 export const upload = (file: File) => {
-  uploadBytes(profileRef, file)
+  console.log(process.env.STORAGE_BUCKET);
+
+  const fileRef = ref(storage, `profile/${file.name}`)
+  console.log(file);
+
+  uploadBytes(fileRef, file)
     .then((snapshot) => {
-      console.log("Upload file!!!", snapshot);
+      console.log("파일 업로드 성공!", snapshot);
     })
     .catch((error) => {
-      console.error("Upload failed", error);
+      console.error("업로드 실패", error);
     });
 };

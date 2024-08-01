@@ -1,31 +1,59 @@
+// app/page.tsx
 "use client";
 
 import Image from "next/image";
 import { atom, useRecoilState } from "recoil";
-import { Button } from "antd";
+import { Button, Input } from "antd";
+import { upload } from "@/lib/utils/storage";
+import { useState } from "react";
 
+// Define Recoil atoms for state management
 const textState = atom<string>({
-  key: "textState", // unique ID (with respect to other atoms/selectors)
-  default: "감자감자야", // default value (aka initial value)
+  key: "textState",
+  default: "감자감자야",
 });
 
 export const textArea = atom<string>({
-  key:'1',
-  default:"나는 구황작물"
-})
+  key: 'textArea',
+  default: "나는 구황작물"
+});
 
 export default function Home() {
+
   const [text, setText] = useRecoilState(textState);
   const [title, setTitle] = useRecoilState(textArea);
+  const [file, setFile] = useState<File | null>(null);
+
+  // Handler for file input change
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    if (event.target.files && event.target.files[0]) {
+      setFile(event.target.files[0]);
+    }
+  };
+
+// 업로드 구현
+  const handleUpload = () => {
+    if (file) {
+      upload(file);
+    } else {
+      console.error("No file selected");
+    }
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
+        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           ㅁㄹㅇㅁㅇㄴㄹ&nbsp;
           <code className="font-mono font-bold">app/page.tsx</code>
         </p>
-        <Button onClick={()=>{setText('홀리몰리 감자감자')}}>{text}</Button>
-        <Button onClick={()=>{setTitle('홀리몰리 고구마몰리')}}>{title}</Button>
+        <Button onClick={() => setText('홀리몰리 감자감자')}>{text}</Button>
+        <Button onClick={() => setTitle('홀리몰리 고구마몰리')}>{title}</Button>
+        
+        {/* 업로드 */}
+        <Input type="file" onChange={handleFileChange} />
+        <Button onClick={handleUpload} disabled={!file}>Upload File</Button>
+
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
             className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
@@ -59,13 +87,8 @@ export default function Home() {
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
         <a
-          // href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          // target="_blank"
-          // rel="noopener noreferrer"
-          onClick={() => {
-            setText("뿨킹감자");
-          }}
+          onClick={() => setText("뿨킹감자")}
         >
           <h2 className="mb-3 text-2xl font-semibold">
             Docs{" "}
@@ -124,7 +147,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p className="m-0 max-w-[30ch] text-balance text-sm opacity-50">
+          <p className="m-0 max-w-[30ch] text-sm opacity-50">
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
