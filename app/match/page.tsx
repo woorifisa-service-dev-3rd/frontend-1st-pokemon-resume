@@ -1,11 +1,7 @@
 "use client";
 
 import React, { useEffect } from "react";
-import type { Metadata } from "next";
 import { Inter } from "next/font/google";
-
-import { Flex, Layout } from "antd";
-import UserIcon from "@/ui/components/match/UserIcon";
 import UserList from "@/ui/components/match/UserList";
 import SelectedUserList from "@/ui/components/match/SelectedUserList";
 import Image from "next/image";
@@ -24,19 +20,19 @@ const MatchPage = ({ children }: React.PropsWithChildren) => {
   const userListDataFetch = async () => {
     const response = await get("users");
     return response;
-  }
+  };
 
-  useEffect(()=>{
-    uid && 
-    userListDataFetch().then((data)=>{
-      const userData = data
-      setUserDataList(data);
-    })
-  })
+  useEffect(() => {
+    uid &&
+      userListDataFetch().then((data) => {
+        const userData = data;
+        setUserDataList(data);
+      });
+  });
 
-  useEffect(()=>{
-    console.log(userDataList)
-  }, [userDataList])
+  useEffect(() => {
+    console.log(userDataList);
+  }, [userDataList]);
 
   return (
     <div className="flex flex-row w-screen h-screen">
