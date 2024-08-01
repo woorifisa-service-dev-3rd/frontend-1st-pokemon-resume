@@ -18,7 +18,7 @@ const UserIcon = ({user} : UserIconProps) => {
         <img src={`${user.user_info.profile_img}`} alt="user-icon" />
       ) : (
         <Image
-          src="/icons/Icon_unknown.png"
+          src="/images/Img_monsterBall.png"
           alt="user-icon"
           width={50}
           height={50}
