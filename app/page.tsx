@@ -3,14 +3,11 @@
 
 import Image from "next/image";
 import { atom, useRecoilState } from "recoil";
-<<<<<<< HEAD
 import { Button, Input } from "antd";
 import { upload, getimg } from "@/lib/utils/storage";
 import { useRef, useState } from "react";
-=======
-import { Button } from "antd";
 import MainContainer from "@/ui/components/main/MainContainer";
->>>>>>> 5c604c62700ac6113fd4eeb7e3edfb824588434a
+
 
 // Define Recoil atoms for state management
 const textState = atom<string>({
@@ -19,20 +16,15 @@ const textState = atom<string>({
 });
 
 export const textArea = atom<string>({
-<<<<<<< HEAD
   key: 'textArea',
   default: "나는 구황작물"
-=======
-  key: "1",
-  default: "나는 구황작물",
->>>>>>> 5c604c62700ac6113fd4eeb7e3edfb824588434a
+
 });
 
 export default function Home() {
 
   const [text, setText] = useRecoilState(textState);
   const [title, setTitle] = useRecoilState(textArea);
-<<<<<<< HEAD
   const [file, setFile] = useState<File | null>(null);
 
   const image = useRef();
@@ -44,7 +36,7 @@ export default function Home() {
     }
   };
 
-// 업로드 구현
+  // 업로드 구현
   const handleUpload = () => {
     if (file) {
       upload(file);
@@ -54,8 +46,8 @@ export default function Home() {
   };
 
   const handleGetimg = async () => {
-      const url = await getimg();
-      image.current.src = url;
+    const url = await getimg();
+    image.current.src = url;
   };
 
   return (
@@ -67,14 +59,14 @@ export default function Home() {
         </p>
         <Button onClick={() => setText('홀리몰리 감자감자')}>{text}</Button>
         <Button onClick={() => setTitle('홀리몰리 고구마몰리')}>{title}</Button>
-        
+
         {/* 업로드 */}
         <Input type="file" onChange={handleFileChange} />
         <Button onClick={handleUpload} disabled={!file}>Upload File</Button>
 
         <Button onClick={handleGetimg}>GET IMG File</Button>
         <img src="" ref={image}></img>
-        
+
 
         <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:size-auto lg:bg-none">
           <a
@@ -175,33 +167,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-=======
-
-  return (
-    <div className="flex flex-row w-screen h-screen relative" style={{ padding: "15vh 15vw" }}>
-      <Image src="/images/스크린샷 2024-08-01 오후 1.52.25.png" alt="background" layout="fill" />
-      <MainContainer />
-      {/* <div
-        className="z-10 w-full h-full"
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-        }}
-      >
-        <Image
-          src="/images/Img_mainBackground.png"
-          width={500}
-          height={500}
-          alt={"메인_배경"}
-          style={{
-            minWidth: "70vw",
-            minHeight: "70vh",
-            borderRadius: "20px",
-          }}
-        />
-      </div> */}
-    </div>
->>>>>>> 5c604c62700ac6113fd4eeb7e3edfb824588434a
-  );
+  )
 }
