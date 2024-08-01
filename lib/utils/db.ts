@@ -29,9 +29,8 @@ export const get = async (col: string) => {
 export const getById = async (col: string, id: string) => {
   const q = query(collection(db, col), where("id", "==", id));
   const querySnapshot = await getDocs(q);
-  querySnapshot.forEach((doc) => {
-    console.log(doc.id, " => ", doc.data());
-  });
+
+  return querySnapshot.docs[0].id;
 };
 
 // collection에서 특정 document 수정
