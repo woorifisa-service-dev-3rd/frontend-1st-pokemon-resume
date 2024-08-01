@@ -2,7 +2,6 @@ import React from "react";
 import { atom, useRecoilState } from "recoil";
 import SkillStack from "./SkillStack";
 import Image from "next/image";
-import { getById } from "@/lib/utils/db";
 
 const dummy = {
   id: "zxcv",
@@ -40,25 +39,6 @@ const dummy = {
     project_due: "12month",
   },
 };
-
-// const fetchUser = async () => {
-//   try {
-//     const collectionName = "users";
-//     // const documentId = "6lPIha7rFHP75DPEmLugESqarhw2";
-//     const user = await get(collectionName);
-//     console.log(user);
-//   } catch (error) {
-//     console.error("Failed to fetch document:", error);
-//   }
-// };
-const collectionName = "users";
-const documentId = "6lPIha7rFHP75DPEmLugESqarhw2";
-const getUser = () => {
-  const userById = getById(collectionName, documentId);
-  return userById;
-};
-
-console.log(`getUser ${getUser()}`);
 
 const dummyText = atom<string>({
   key: "firstDummy",
