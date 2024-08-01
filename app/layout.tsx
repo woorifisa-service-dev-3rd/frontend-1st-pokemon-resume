@@ -15,7 +15,7 @@ export const metadata: Metadata = {
 
 const RootLayout = ({ children }: React.PropsWithChildren) => (
   <html lang="en">
-    <body>
+    <body className="h-screen flex items-center">
       <RecoilWrapper>
         <AntdRegistry>{children}</AntdRegistry>
       </RecoilWrapper>
