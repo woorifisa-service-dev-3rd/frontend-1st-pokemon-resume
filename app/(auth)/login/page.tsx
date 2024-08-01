@@ -16,7 +16,7 @@ export const userIdAtom = atom<string>({
 });
 
 type FieldType = {
-  username: string;
+  email: string;
   password: string;
 };
 
@@ -43,27 +43,22 @@ export default function Login() {
 
   const onFinish: FormProps<FieldType>["onFinish"] = async (values) => {
     console.log("Success:", values);
-    const result = await logIn(values.username, values.password);
+    const result = await logIn(values.email, values.password);
     setUid(result);
     console.log(result);
 
     location.replace("/");
   };
 
-  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (errorInfo) => {
+  const onFinishFailed: FormProps<FieldType>["onFinishFailed"] = (
+    errorInfo
+  ) => {
     console.log("Failed:", errorInfo);
   };
 
   return (
-    <>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          height: "100vh",
-        }}
-      >
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 w-screen">
+      <div className="bg-white shadow-lg rounded-lg p-8 w-full max-w-lg mx-auto">
         <Form
           name="basic"
           labelCol={{ span: 8 }}
@@ -77,14 +72,24 @@ export default function Login() {
           autoComplete="off"
           layout={"vertical"}
         >
-          <h1 style={{ textAlign: "center" }}>로그인</h1>
+          <a href="https://fontmeme.com/fonts/pokemon-font/">
+            <img
+              src="https://fontmeme.com/permalink/240801/3f5d2568ffd0f7fd1a23754b08972b6c.png"
+              alt="pokemon-font"
+              border="0"
+            />
+          </a>
           <br />
           <Form.Item<FieldType>
-            label="Id"
-            name="username"
+            label="Id(이메일)"
+            name="email"
             rules={[{ required: true, message: "Please input your username!" }]}
+            className="mx-auto max-w-full"
           >
-            <Input style={{ width: 400 }} placeholder="이메일 형식으로 입력하시오." />
+            <Input
+              style={{ width: 450 }}
+              placeholder="이메일 형식으로 입력하시오."
+            />
           </Form.Item>
 
           <Form.Item<FieldType>
@@ -92,76 +97,103 @@ export default function Login() {
             name="password"
             rules={[{ required: true, message: "Please input your password!" }]}
           >
-            <Input.Password style={{ width: 400 }} />
+            <Input.Password style={{ width: 450 }} />
           </Form.Item>
-
-          <Form.Item<FieldType> name="remember" valuePropName="checked" wrapperCol={{ span: 16 }}>
-            <Checkbox>Remember me</Checkbox>
-          </Form.Item>
-
           <Form.Item wrapperCol={{ span: 16 }}>
             <div style={{ display: "flex", gap: "10px" }}>
               <Button type="primary" htmlType="submit">
                 로그인
               </Button>
-              <Button type="primary" htmlType="button" onClick={showSignUpModal}>
+              <Button
+                type="primary"
+                htmlType="button"
+                onClick={showSignUpModal}
+              >
                 회원가입
               </Button>
             </div>
           </Form.Item>
         </Form>
 
-        <Modal open={isSignUpModalOpen} onOk={handleSignUpOk} onCancel={handleSignUpCancel}>
-          <Form
-            name="sign_up"
-            labelCol={{ span: 8 }}
-            wrapperCol={{ span: 16 }}
-            style={{ maxWidth: 600 }}
-            onFinish={(values) => console.log("Sign Up Success:", values)}
-            onFinishFailed={(errorInfo) => console.log("Sign Up Failed:", errorInfo)}
-          >
-            <Form.Item<FieldType>
-              label="ID(이메일)"
-              name="username"
-              rules={[{ required: true, message: "Please input your username!" }]}
+        <Modal
+          open={isSignUpModalOpen}
+          onOk={handleSignUpOk}
+          onCancel={handleSignUpCancel}
+        >
+          <div className="p-8 w-full max-w-lg mx-auto">
+            <Form
+              name="sign_up"
+              labelCol={{ span: 8 }}
+              wrapperCol={{ span: 16 }}
+              style={{ maxWidth: 600 }}
+              onFinish={(values) => console.log("Sign Up Success:", values)}
+              onFinishFailed={(errorInfo) =>
+                console.log("Sign Up Failed:", errorInfo)
+              }
+              layout="vertical"
             >
-              <Input autoComplete="off" onChange={(e) => setEmail(e.target.value)} />
-            </Form.Item>
-            <Form.Item<FieldType>
-              label="Password"
-              name="password"
-              rules={[{ required: true, message: "Please input your password!" }]}
-            >
-              <Input.Password
-                placeholder="6자 이상"
-                onChange={(e) => setPassword(e.target.value)}
-              />
-            </Form.Item>
-            <Form.Item<FieldType>
-              label="Password 확인"
-              name="confirmPassword"
-              dependencies={["password"]}
-              rules={[
-                {
-                  required: true,
-                  message: "비밀번호를 확인하시오",
-                },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("password") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(new Error("비밀번호가 일치하지 않습니다."));
+              <h2 className="text-xl font-semibold">회원가입</h2>
+              <br />
+              <Form.Item
+                label="ID(이메일)"
+                name="email"
+                rules={[
+                  {
+                    required: true,
+                    message: "Please input your username!",
                   },
-                }),
-              ]}
-            >
-              <Input.Password />
-            </Form.Item>
-          </Form>
+                ]}
+                className="mx-auto max-w-full "
+              >
+                <Input
+                  className=" border-gray-300 rounded-md"
+                  style={{ width: 400 }}
+                  autoComplete="off"
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </Form.Item>
+
+              <Form.Item<FieldType>
+                label="Password"
+                name="password"
+                rules={[
+                  { required: true, message: "Please input your password!" },
+                ]}
+              >
+                <Input.Password
+                  placeholder="6자 이상"
+                  onChange={(e) => setPassword(e.target.value)}
+                  style={{ width: 400 }}
+                />
+              </Form.Item>
+              <Form.Item<FieldType>
+                label="Password 확인"
+                name="confirmPassword"
+                dependencies={["password"]}
+                rules={[
+                  {
+                    required: true,
+                    message: "비밀번호를 확인하시오",
+                  },
+                  ({ getFieldValue }) => ({
+                    validator(_, value) {
+                      if (!value || getFieldValue("password") === value) {
+                        return Promise.resolve();
+                      }
+                      return Promise.reject(
+                        new Error("비밀번호가 일치하지 않습니다.")
+                      );
+                    },
+                  }),
+                ]}
+              >
+                <Input.Password style={{ width: 400 }} />
+              </Form.Item>
+            </Form>
+          </div>
         </Modal>
       </div>
-    </>
+    </div>
   );
 }
 
