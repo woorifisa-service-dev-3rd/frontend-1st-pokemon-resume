@@ -10,9 +10,9 @@ const textState = atom<string>({
 });
 
 export const textArea = atom<string>({
-  key:'1',
-  default:"나는 구황작물"
-})
+  key: "1",
+  default: "나는 구황작물",
+});
 
 export default function Home() {
   const [text, setText] = useRecoilState(textState);

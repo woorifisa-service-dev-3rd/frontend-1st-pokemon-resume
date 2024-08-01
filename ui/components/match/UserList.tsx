@@ -54,7 +54,7 @@ const userDummys: User[] = [
 
 const UserList = () => {
   return (
-    <div className="relative flex h-full" style={{height: '100%'}}>
+    <div className="relative flex h-full w-full" style={{ height: "100%" }}>
       <Image
         src="/images/Img_userListBackground.png"
         alt="background"
