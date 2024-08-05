@@ -1,8 +1,11 @@
+// app/page.tsx
 "use client";
 
 import Image from "next/image";
 import { atom, useRecoilState } from "recoil";
-import { Button } from "antd";
+import { Button, Input } from "antd";
+import { upload, getimg } from "@/lib/utils/storage";
+import { useRef, useState } from "react";
 import MainContainer from "@/ui/components/main/MainContainer";
 import { getById } from "@/lib/utils/db";
 import { useEffect } from "react";
@@ -19,8 +22,8 @@ export default function Home() {
     return reponse;
   };
 
-  useEffect(()=>{
-    uid && userDataFetch().then((data)=>{
+  useEffect(() => {
+    uid && userDataFetch().then((data) => {
       const userData = data as User;
       setUserData(userData)
     })
