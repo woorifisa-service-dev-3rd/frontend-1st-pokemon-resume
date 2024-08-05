@@ -72,12 +72,12 @@ const ProfileSetupPage: React.FC = () => {
         }
     };
     const normFile = (e: any) => {
-      if (Array.isArray(e)) {
-        return e;
-      }
-      return e?.fileList;
+        if (Array.isArray(e)) {
+            return e;
+        }
+        return e?.fileList;
     };
-    
+
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 w-screen">
