@@ -24,7 +24,7 @@ export default function Home() {
       const userData = data as User;
       setUserData(userData)
     })
-  })
+  }, [uid])
 
   return (
     <div className="flex flex-row w-screen h-screen relative" style={{ padding: "15vh 15vw" }}>

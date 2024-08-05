@@ -6,7 +6,7 @@ import Usercard from "../userInfoCard/Usercard";
 const userList = [1, 2, 3, 4];
 
 const user = {
-  id: "zxcv",
+  id: "1",
   email: "test@email.com",
   password: "1111",
   team: [],

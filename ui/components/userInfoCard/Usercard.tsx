@@ -4,7 +4,7 @@ import SkillStack from "./SkillStack";
 import Image from "next/image";
 
 const dummy = {
-  id: "zxcv",
+  id: "1",
   email: "test@email.com",
   password: "1111",
   user_info: {

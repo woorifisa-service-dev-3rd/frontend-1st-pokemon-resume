@@ -28,7 +28,7 @@ const MatchPage = ({ children }: React.PropsWithChildren) => {
         const userData = data;
         setUserDataList(data);
       });
-  });
+  }, [uid]);
 
   useEffect(() => {
     console.log(userDataList);
