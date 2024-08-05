@@ -48,17 +48,18 @@ const dummyText = atom<string>({
 const Usercard = () => {
   const [info, setInfo] = useRecoilState(dummyText);
   const parsedInfo = JSON.parse(info);
-  const windowWidth = window.innerWidth;
-
-  console.log(windowWidth)
 
   return (
-    <div className="relative flex h-full w-full" style={{ minWidth: "30vw", color: '#181818' }}>
+    <div
+      className="relative flex h-full w-full"
+      style={{ minWidth: "30vw", color: "#181818" }}
+    >
       <Image
         src="/images/Img_userProfile.png"
         alt="background"
         layout="fill"
         objectFit="fill"
+        sizes=""
       />
       <div className="absolute z-10" style={{}}>
         <div style={{ height: "10vh", fontSize: "4vh", padding: "1.2vh" }}>
@@ -86,23 +87,23 @@ const Usercard = () => {
             justifyContent: "space-around",
             width: "30vw",
             alignItems: "flex-end",
-            position: 'absolute',
-            right: '7%',
-            top: '55%',
+            position: "absolute",
+            right: "7%",
+            top: "55%",
           }}
         >
           {parsedInfo.user_info.skill_stack.map((it) => (
             <SkillStack skill={it} key={it.name} />
           ))}
         </div>
-        <div style={{position:'absolute', left: 2, top: '71.5%'}}>
-        <div style={{ height: "10vh", fontSize: "4vh", padding: "2vh" }}>
-          이름 : {parsedInfo.user_info.name}
-        </div>
-        <div style={{ height: "10vh", fontSize: "2.5vh", padding: "2vh" }}>
-          <p>나이 : {parsedInfo.user_info.age}</p>
-          <p>원하는 프로젝트기한 : {parsedInfo.user_info.project_due}</p>
-        </div>
+        <div style={{ position: "absolute", left: 2, top: "71.5%" }}>
+          <div style={{ height: "10vh", fontSize: "4vh", padding: "2vh" }}>
+            이름 : {parsedInfo.user_info.name}
+          </div>
+          <div style={{ height: "10vh", fontSize: "2.5vh", padding: "2vh" }}>
+            <p>나이 : {parsedInfo.user_info.age}</p>
+            <p>원하는 프로젝트기한 : {parsedInfo.user_info.project_due}</p>
+          </div>
         </div>
       </div>
     </div>

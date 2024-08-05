@@ -45,8 +45,11 @@ const ProfileSetupPage: React.FC = () => {
     const handleFinish = async (values: any) => {
         const { name, age, phone, githubId, projectDue } = values;
 
-        const userId = 'user-id-placeholder';
-        const userEmail = 'user-email-placeholder';
+        // 로컬 스토리지에서 user 정보 가져오기
+        const userStorage = JSON.parse(localStorage.getItem('recoil-persist') || '{}');
+        console.log(userStorage);
+        const userId = userStorage.userId.uid || 'default-user-id';
+        const userEmail = userStorage.userId.email || 'default-email@example.com';
 
         const user: User = {
             id: userId,
@@ -71,13 +74,13 @@ const ProfileSetupPage: React.FC = () => {
             message.error('Failed to update profile');
         }
     };
+
     const normFile = (e: any) => {
         if (Array.isArray(e)) {
             return e;
         }
         return e?.fileList;
     };
-
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gray-100 w-screen">
@@ -153,30 +156,9 @@ const ProfileSetupPage: React.FC = () => {
                             </button>
                         </Upload>
                     </Form.Item>
-                    {/* <Form.Item
-                        label="프로필 이미지"
-                        name="profileImg"
-                        className="mx-auto w-full max-w-sm"
-                    >
-                        <Upload
-                            customRequest={({ file, onSuccess }) => {
-                                setFileList([file]);
-                                onSuccess?.(file);
-                            }}
-                            showUploadList={false}
-                            onChange={handleFileChange}
-                            className="w-full"
-                        >
-                            <Button className="w-full bg-blue-500 text-white py-2 rounded-md">
-                                Upload Profile Picture
-                            </Button>
-                        </Upload>
-                    </Form.Item> */}
 
                     <Form.Item label="기술 스택" className="mx-auto w-full">
-                        <SkillSelector
-                            onSkillsSelected={handleSkillsSelected}
-                        />
+                        <SkillSelector onSkillsSelected={handleSkillsSelected} />
                     </Form.Item>
 
                     <Form.Item

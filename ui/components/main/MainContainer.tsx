@@ -1,5 +1,7 @@
 import Image from "next/image";
-import React from "react";
+import React, { useState } from "react";
+import { Button, Modal } from "antd";
+import Usercard from "../userInfoCard/Usercard";
 
 const userList = [1, 2, 3, 4];
 
@@ -27,6 +29,10 @@ const user = {
 };
 
 const MainContainer = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const isShowModal = () => setIsOpen(!isOpen);
+  const closeModal = () => setIsOpen(false);
+
   return (
     <div
       className="z-10 w-full h-full"
@@ -35,8 +41,19 @@ const MainContainer = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
+        zIndex: 999,
       }}
     >
+      {isOpen && (
+        <Modal
+          open={isOpen}
+          onCancel={closeModal}
+          style={{ width: "40vw", height: "50vh" }}
+        >
+          <Usercard />
+        </Modal>
+      )}
+
       <Image
         src="/images/Img_mainBackground.png"
         width={500}
@@ -87,16 +104,16 @@ const MainContainer = () => {
           padding: "1rem",
         }}
       >
-          <img
-            src="/images/Img_pixelMeta.png"
-            alt={"메인_배경"}
-            style={{
-              height: "40vw",
-              width: "25vw",
-              maxHeight: "40vh",
-              maxWidth: "30vw",
-            }}
-          />
+        <img
+          src="/images/Img_pixelMeta.png"
+          alt={"메인_배경"}
+          style={{
+            height: "40vw",
+            width: "25vw",
+            maxHeight: "40vh",
+            maxWidth: "30vw",
+          }}
+        />
       </div>
       <div
         style={{
@@ -127,6 +144,7 @@ const MainContainer = () => {
               borderRadius: "500px",
               padding: "0.5rem",
             }}
+            onClick={isShowModal}
           >
             <Image
               src="/images/Img_monsterBall.png"

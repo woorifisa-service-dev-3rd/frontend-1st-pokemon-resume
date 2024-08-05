@@ -96,13 +96,33 @@ const userDummys: User[] = [
 
 const SelectedUserList = () => {
   return (
-    <div className="relative flex flex-col h-full" style={{ height: "40vh", maxHeight: '285px' }}>
+    <div
+      className="relative flex flex-col h-full"
+      style={{
+        height: "40vh",
+        maxHeight: "285px",
+        display: "flex",
+        flexDirection: "column",
+        position: "relative",
+        zIndex: 30,
+        width: 'fit-content',
+      }}
+    >
       <Image
         src="/images/Img_selectedUserBackground.png"
         alt="background"
         layout="fill"
       />
-      <div className="absolute top-0 left-0 z-10" style={{ padding: "0.9rem" }}>
+      <div
+        className="absolute top-0 left-0 z-10"
+        style={{
+          padding: "0.9rem",
+          position: "absolute",
+          top: 0,
+          left: 0,
+          zIndex: 999,
+        }}
+      >
         {userDummys.map((dummy) => (
           <div key={dummy.id}>
             <UserIcon user={dummy} />
@@ -111,7 +131,13 @@ const SelectedUserList = () => {
       </div>
       <button
         className="absolute z-10 bottom-0 left-0"
-        style={{ padding: "0.7rem" }}
+        style={{
+          padding: "0.7rem",
+          position: "absolute",
+          bottom: 0,
+          right: 0,
+          zIndex: 999,
+        }}
       >
         시작
       </button>
