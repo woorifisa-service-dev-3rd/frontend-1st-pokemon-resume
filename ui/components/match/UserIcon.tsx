@@ -11,6 +11,7 @@ const UserIcon = ({user} : UserIconProps) => {
         width: "2rem",
         height: "2rem",
         margin: "0.5rem",
+        zIndex: 999
         // , boxShadow: '1px 1px 1px 0 rgba(0, 0, 0, 0.2)', borderRadius: '0.9rem'
       }}
     >

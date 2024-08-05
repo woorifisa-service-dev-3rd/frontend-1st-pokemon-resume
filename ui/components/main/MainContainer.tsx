@@ -41,23 +41,18 @@ const MainContainer = () => {
         justifyContent: "center",
         alignItems: "center",
         position: "relative",
+        zIndex: 999,
       }}
     >
-      {/* <Button type="primary" onClick={isShowModal}>
-        버튼이잖아
-      </Button>
       {isOpen && (
-        <Modal>
-          <Usercard clickModal={isShowModal} />
+        <Modal
+          open={isOpen}
+          onCancel={closeModal}
+          style={{ width: "40vw", height: "50vh" }}
+        >
+          <Usercard />
         </Modal>
-      )} */}
-
-      <Button type="primary" onClick={isShowModal}>
-        모달창 열기
-      </Button>
-      <Modal open={isOpen} onCancel={closeModal}>
-        <Usercard />
-      </Modal>
+      )}
 
       <Image
         src="/images/Img_mainBackground.png"
@@ -149,6 +144,7 @@ const MainContainer = () => {
               borderRadius: "500px",
               padding: "0.5rem",
             }}
+            onClick={isShowModal}
           >
             <Image
               src="/images/Img_monsterBall.png"
