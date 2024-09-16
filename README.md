@@ -21,7 +21,7 @@
 
 ## 🖥️ 데모 링크 / 시연 영상
 
-- [라이브 데모](https://woorifisa-service-dev-3rd.github.io/frontend-1st-poketmon-resume/)
+- [라이브 데모](https://woorifisa-service-dev-3rd.github.io/frontend-1st-pokemon-resume/)
 
 - 데스크탑
 
